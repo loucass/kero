@@ -22,23 +22,19 @@ function App() {
     }
   }, [storedUser]);
 
-  const { login, logout } = useAuth();
+  const { login, _ } = useAuth();
 
   const handleLogin = (userData) => {
     login(userData);
     setUser(userData);
   };
 
-  const handleLogout = () => {
-    logout();
-    setUser(null);
-  };
 
   return (
     <ThemeProvider>
       <LanguageProvider>
         <div className="app">
-          {user && <Header user={user} onLogout={handleLogout} />}
+          <Header />
           <main className="main-content">
             <Routes>
               <Route path="/" element={<LandingPage />} />
