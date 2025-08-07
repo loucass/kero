@@ -14,10 +14,10 @@ const MarketingUserDashboard = () => {
   const [user] = useLocalStorage('user', null);
   const [referredUsers, setReferredUsers] = useState([]);
   const [totalPayments, setTotalPayments] = useState(0);
-  const [monthlyData, setMonthlyData] = useState([]);
-  const [topServices, setTopServices] = useState([]);
+  const [__, setMonthlyData] = useState([]);
+  const [___, setTopServices] = useState([]);
   const [_, setIsScrolled] = useState(false);
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState('users');
 
   useEffect(() => {
     if (!user || user.role !== 'marketing') {
@@ -149,61 +149,6 @@ const MarketingUserDashboard = () => {
           
           {/* Tab Content */}
           <div className="tab-content">
-            {activeTab === 'overview' && (
-              <div className="overview-content">
-                {/* Chart Section */}
-                <div className="chart-section">
-                  <div className="section-header">
-                    <h2>{t('dashboardMonthlyPerformance')}</h2>
-                    <p>{t('dashboardMonthlyPerformanceDesc')}</p>
-                  </div>
-                  
-                  <div className="chart-container">
-                    <div className="chart">
-                      <div className="chart-bars">
-                        {monthlyData.map((data, index) => (
-                          <div key={index} className="bar-container">
-                            <div className="bar-label">{data.month}</div>
-                            <div className="bar-wrapper">
-                              <div 
-                                className="bar" 
-                                style={{ height: `${data.payments * 20}px` }}
-                              ></div>
-                            </div>
-                            <div className="bar-value">${data.revenue}</div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Top Services */}
-                <div className="top-services-section">
-                  <div className="section-header">
-                    <h2>{t('dashboardTopServices')}</h2>
-                    <p>{t('dashboardTopServicesDesc')}</p>
-                  </div>
-                  
-                  <div className="top-services-grid">
-                    {topServices.map((service, index) => (
-                      <div key={index} className="service-stat-card">
-                        <div className="service-rank">#{index + 1}</div>
-                        <div className="service-name">{service.name}</div>
-                        <div className="service-count">{service.count} {t('dashboardSales')}</div>
-                        <div className="service-progress">
-                          <div 
-                            className="progress-bar" 
-                            style={{ width: `${(service.count / Math.max(...topServices.map(s => s.count))) * 100}%` }}
-                          ></div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-            
             {activeTab === 'users' && (
               <div className="users-content">
                 <div className="referred-users-section">
@@ -348,16 +293,6 @@ const MarketingUserDashboard = () => {
             )}
           </div>
           
-          {/* Call to Action */}
-          <div className="cta-section">
-            <div className="cta-content">
-              <h2>{t('dashboardGrowYourNetwork')}</h2>
-              <p>{t('dashboardGrowYourNetworkDesc')}</p>
-              <button className="btn btn-primary btn-lg">
-                {t('dashboardShareReferral')}
-              </button>
-            </div>
-          </div>
         </div>
       </section>
     </div>

@@ -212,9 +212,6 @@ const LandingPage = () => {
                 <Link to="/signup" className="btn btn-primary btn-lg">
                   {t('landingNewGetStarted')}
                 </Link>
-                <Link to="/login" className="btn btn-primary btn-lg">
-                  {t('landingNewGetStarted')}
-                </Link>
               </div>
             </div>
           </div>
