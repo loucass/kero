@@ -49,6 +49,7 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem('user');
     navigate('/');
+    setIsMenuOpen(false);
   };
 
   const toggleMenu = () => {
@@ -107,12 +108,13 @@ const Header = () => {
         
         <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`} ref={menuRef}>
           <div className="mobile-menu-content">
+            <div className="mobile-toggles">
+              <ThemeToggle />
+              <LanguageToggle />
+            </div>
             {user ? (
               <button 
-                onClick={() => {
-                  handleLogout();
-                  toggleMenu();
-                }}
+                onClick={handleLogout}
                 className="btn btn-logout mobile-btn"
               >
                 {t('logout')}
