@@ -97,18 +97,6 @@ const Login = ({ onLogin }) => {
                   />
                 </div>
                 
-                <div className="form-group">
-                  <label htmlFor="referralId">{t('referralId')}</label>
-                  <input
-                    type="text"
-                    id="referralId"
-                    value={referralId}
-                    onChange={(e) => setReferralId(e.target.value)}
-                    className="form-input"
-                    placeholder={t('loginReferralPlaceholder')}
-                  />
-                </div>
-                
                 <button type="submit" className="btn btn-primary btn-block">
                   {t('loginButton')}
                 </button>
