@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import LanguageToggle from '../components/common/LanguageToggle';
-import ThemeToggle from '../components/common/ThemeToggle';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import '../styles/signup.css';
 import useLanguage from '../hooks/useLanguage';
 import useTheme from '../hooks/useTheme';
@@ -10,15 +8,27 @@ const SignupPage = () => {
   const { t } = useLanguage();
   const { theme } = useTheme();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams(); // Hook to access query parameters
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     confirmPassword: '',
     role: 'normal',
-    referralId: ''
+    referralId: '' // Will be set from URL query param
   });
   const [error, setError] = useState('');
+
+  // Extract ref query parameter and set it to formData.referralId
+  useEffect(() => {
+    const ref = searchParams.get('ref'); // Get 'ref' query parameter
+    if (ref) {
+      setFormData(prev => ({
+        ...prev,
+        referralId: ref
+      }));
+    }
+  }, [searchParams]); // Run when searchParams changes
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,7 +65,6 @@ const SignupPage = () => {
 
   return (
     <div className={`signup-page ${theme}`}>
-
       {/* Signup Section */}
       <section className="signup-section">
         <div className="container">

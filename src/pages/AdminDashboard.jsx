@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { useData } from '../hooks/useData';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import UserManagement from '../components/UserManagement';
@@ -13,7 +12,6 @@ import useTheme from '../hooks/useTheme';
 const AdminDashboard = () => {
   const { t } = useLanguage();
   const { theme } = useTheme();
-  const navigate = useNavigate();
   const { 
     users, 
     payments, 
@@ -42,9 +40,6 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     if (user == null) return;
-    if (!user || user.role !== 'admin') {
-      navigate('/');
-    }
 
     const totalUsers = users?.length || 0;
     const normalUsers = users?.filter(u => u.role === 'normal')?.length || 0;
@@ -79,7 +74,7 @@ const AdminDashboard = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [user, navigate, users, payments, services]);
+  }, [user, users, payments, services]);
 
   useEffect(() => {
     if (wallet && typeof wallet === 'object' && 'number' in wallet) {
