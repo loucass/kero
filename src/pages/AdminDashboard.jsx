@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../hooks/useData';
-import {useLocalStorage} from '../hooks/useLocalStorage';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import UserManagement from '../components/UserManagement';
 import ServiceManagement from '../components/ServiceManagement';
 import PaymentApproval from '../components/PaymentApproval';
@@ -37,14 +37,15 @@ const AdminDashboard = () => {
     totalRevenue: 0,
     monthlyGrowth: 0
   });
+  const [isEditingWallet, setIsEditingWallet] = useState(false);
+  const [tempWalletNumber, setTempWalletNumber] = useState('');
 
   useEffect(() => {
     if (user == null) return;
-    if (!user || user.role != 'admin') {
+    if (!user || user.role !== 'admin') {
       navigate('/');
     }
 
-    // Calculate stats with null checks
     const totalUsers = users?.length || 0;
     const normalUsers = users?.filter(u => u.role === 'normal')?.length || 0;
     const marketingUsers = users?.filter(u => u.role === 'marketing')?.length || 0;
@@ -57,7 +58,6 @@ const AdminDashboard = () => {
       return sum + (service ? service.price : 0);
     }, 0);
 
-    // Calculate monthly growth (simulated)
     const monthlyGrowth = Math.floor(Math.random() * 20) + 5;
 
     setStats({
@@ -81,17 +81,89 @@ const AdminDashboard = () => {
     };
   }, [user, navigate, users, payments, services]);
 
+  useEffect(() => {
+    if (wallet && typeof wallet === 'object' && 'number' in wallet) {
+      setTempWalletNumber(wallet.number || '');
+    } else {
+      console.warn('Invalid wallet structure:', wallet);
+      setTempWalletNumber('');
+    }
+  }, [wallet]);
+
+  const handleEditWallet = () => {
+    setIsEditingWallet(true);
+  };
+
+  const handleSaveWallet = () => {
+    if (!wallet || tempWalletNumber.trim() === '') {
+      console.warn('Cannot save: Invalid wallet or empty wallet number');
+      setIsEditingWallet(false);
+      return;
+    }
+    const updatedWallet = {
+      ...wallet,
+      number: tempWalletNumber.trim()
+    };
+    console.log('Updating wallet with:', updatedWallet);
+    updateWallet(updatedWallet.number);
+    setIsEditingWallet(false);
+  };
+
+  const handleCancelWalletEdit = () => {
+    setTempWalletNumber(wallet?.number || '');
+    setIsEditingWallet(false);
+  };
+
   return (
     <div className={`admin-dashboard ${theme}`}>
-      {/* Dashboard Section */}
       <section className="dashboard-section">
         <div className="container">
           <div className="dashboard-header">
             <h1>{t('adminPanel')}</h1>
             <p>{t('welcome')}, {user?.name}!</p>
+            
+            <div className="wallet-info">
+              <div className="wallet-label">{t('walletNumber')}</div>
+              
+              {isEditingWallet ? (
+                <div className="wallet-edit-container">
+                  <input
+                    type="text"
+                    value={tempWalletNumber}
+                    onChange={(e) => setTempWalletNumber(e.target.value)}
+                    className="wallet-input"
+                    placeholder={t('enterWalletNumber')}
+                  />
+                  <div className="wallet-edit-actions">
+                    <button 
+                      onClick={handleSaveWallet}
+                      className="wallet-btn wallet-save-btn"
+                    >
+                      {t('save')}
+                    </button>
+                    <button 
+                      onClick={handleCancelWalletEdit}
+                      className="wallet-btn wallet-cancel-btn"
+                    >
+                      {t('cancel')}
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="wallet-display-container">
+                  <div className="wallet-number">{wallet?.number || 'N/A'}</div>
+                  <button 
+                    onClick={handleEditWallet}
+                    className="wallet-edit-btn btn-action btn-edit"
+                    title={t('editWalletNumber')}
+                  >
+                    edit
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
           
-          {/* Stats Overview */}
           <div className="stats-overview">
             <div className="stats-grid">
               <div className="stat-card primary">
@@ -140,14 +212,7 @@ const AdminDashboard = () => {
             </div>
           </div>
           
-          {/* Tabs */}
           <div className="dashboard-tabs">
-            {/* <button 
-              className={`tab-btn ${activeTab === 'overview' ? 'active' : ''}`}
-              onClick={() => setActiveTab('overview')}
-            >
-              {t('dashboardOverview')}
-            </button> */}
             <button 
               className={`tab-btn ${activeTab === 'users' ? 'active' : ''}`}
               onClick={() => setActiveTab('users')}
@@ -174,7 +239,6 @@ const AdminDashboard = () => {
             </button>
           </div>
           
-          {/* Tab Content */}
           <div className="tab-content">
             {activeTab === 'users' && (
               <UserManagement users={users || []} />

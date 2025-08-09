@@ -1417,3 +1417,219 @@
     min-width: 700px; /* keeps columns readable on small screens */
   }
 }
+/* Wallet Information Styles */
+.wallet-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 12px;
+  border-left: 4px solid #6366f1;
+  max-width: fit-content;
+}
+
+.wallet-label {
+  font-weight: 600;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.admin-dashboard.dark .wallet-label {
+  color: #94a3b8;
+}
+
+.wallet-number {
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  color: #6366f1;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.admin-dashboard.dark .wallet-number {
+  color: #818cf8;
+}
+
+/* Responsive adjustments for wallet info */
+@media (max-width: 768px) {
+  .wallet-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 10px 15px;
+  }
+
+  .wallet-number {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .wallet-info {
+    max-width: 100%;
+  }
+}
+/* Wallet Information Styles */
+.wallet-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 12px;
+  border-left: 4px solid #6366f1;
+  max-width: fit-content;
+}
+
+.wallet-label {
+  font-weight: 600;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.admin-dashboard.dark .wallet-label {
+  color: #94a3b8;
+}
+
+.wallet-display-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wallet-number {
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  color: #6366f1;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.admin-dashboard.dark .wallet-number {
+  color: #818cf8;
+}
+
+.wallet-edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.wallet-edit-btn:hover {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.wallet-edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.wallet-input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #6366f1;
+  border-radius: 8px;
+  font-family: "Courier New", monospace;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #1e293b;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.admin-dashboard.dark .wallet-input {
+  background: rgba(15, 23, 42, 0.8);
+  border-color: #818cf8;
+  color: #f1f5f9;
+}
+
+.wallet-input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.wallet-edit-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.wallet-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.wallet-save-btn {
+  background: #6366f1;
+  color: white;
+}
+
+.wallet-save-btn:hover {
+  background: #4f46e5;
+}
+
+.wallet-cancel-btn {
+  background: #e2e8f0;
+  color: #64748b;
+}
+
+.wallet-cancel-btn:hover {
+  background: #cbd5e1;
+}
+
+.admin-dashboard.dark .wallet-cancel-btn {
+  background: #334155;
+  color: #94a3b8;
+}
+
+.admin-dashboard.dark .wallet-cancel-btn:hover {
+  background: #475569;
+}
+
+/* Responsive adjustments for wallet info */
+@media (max-width: 768px) {
+  .wallet-info {
+    max-width: 100%;
+  }
+
+  .wallet-edit-container {
+    width: 100%;
+  }
+
+  .wallet-number {
+    font-size: 0.9rem;
+  }
+
+  .wallet-edit-actions {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 576px) {
+  .wallet-info {
+    padding: 10px 15px;
+  }
+
+  .wallet-input {
+    font-size: 0.9rem;
+  }
+
+  .wallet-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
