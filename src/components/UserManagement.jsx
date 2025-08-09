@@ -14,7 +14,7 @@ const UserManagement = ({ users }) => {
   });
 
   return (
-    <div className="user-management">
+    <div className="service-management">
       <div className="section-header">
         <h2>{t('users')}</h2>
         <p>{t('dashboardManageUsers')}</p>
@@ -63,20 +63,20 @@ const UserManagement = ({ users }) => {
               <tbody>
                 {filteredUsers.map(user => (
                   <tr key={user.id}>
-                    <td data-label="ID">{user.id}</td>
-                    <td data-label={t('username')}>{user.name}</td>
-                    <td data-label={t('referralId')}>{user.referralId}</td>
-                    <td data-label={t('dashboardRole')}>
+                    <td>{user.id}</td>
+                    <td>{user.name}</td>
+                    <td>{user.referralId}</td>
+                    <td>
                       <span className={`role-badge ${user.role}`}>
                         {user.role}
                       </span>
                     </td>
-                    <td data-label={t('dashboardStatus')}>
+                    <td>
                       <span className={`status-badge ${user.role === 'normal' ? 'active' : 'active'}`}>
                         {t('dashboardActive')}
                       </span>
                     </td>
-                    <td data-label={t('dashboardActions')}>
+                    <td>
                       <div className="action-buttons">
                         <button className="btn-action btn-edit">
                           {t('edit')}

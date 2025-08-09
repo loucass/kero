@@ -727,7 +727,7 @@
 .search-container {
   position: relative;
   flex: 1;
-  min-width: 250px;
+  min-width: 200px;
 }
 
 .search-icon {
@@ -735,21 +735,16 @@
   left: 15px;
   top: 50%;
   transform: translateY(-50%);
-  color: #64748b;
-}
-
-.admin-dashboard.dark .search-icon {
   color: #94a3b8;
+  font-size: 1.2rem;
 }
 
 .search-input {
   width: 100%;
-  padding: 12px 15px 12px 45px;
+  padding: 12px 16px 12px 40px;
   border: 1px solid #e2e8f0;
   border-radius: 10px;
   font-size: 1rem;
-  background: white;
-  color: #1e293b;
   transition: all 0.3s ease;
 }
 
@@ -771,12 +766,16 @@
 
 .filter-select {
   width: 100%;
-  padding: 12px 15px;
+  padding: 12px 16px;
   border: 1px solid #e2e8f0;
   border-radius: 10px;
-  font-size: 1rem;
   background: white;
-  color: #1e293b;
+  font-size: 1rem;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7' /%3E%3C/svg%3E");
+  background-position: right 16px center;
+  background-repeat: no-repeat;
+  background-size: 1.2em;
   transition: all 0.3s ease;
 }
 
@@ -792,7 +791,6 @@
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
-/* Table Responsive */
 .users-table-container {
   overflow-x: auto;
   border-radius: 12px;
@@ -801,12 +799,6 @@
 
 .admin-dashboard.dark .users-table-container {
   border-color: #334155;
-}
-
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .users-table {
@@ -949,82 +941,51 @@
 }
 
 /* Mobile Responsive Styles */
+/* User Management Mobile Styles */
 @media (max-width: 768px) {
   .user-controls {
     flex-direction: column;
     gap: 15px;
   }
-
   .search-container {
     min-width: 100%;
   }
-
   .filter-container {
     min-width: 100%;
   }
 
-  /* Mobile Table Styles */
+  /* Enable horizontal scrolling for the table */
+  .users-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+  }
+
   .users-table {
-    border: 0;
+    min-width: 800px; /* Adjust based on your table's content width to force scrolling */
+    width: max-content; /* Ensures table doesn't shrink */
   }
 
+  /* Ensure thead is visible and sticky works */
   .users-table thead {
-    display: none;
+    display: table-header-group !important; /* Override any hidden styles */
   }
 
+  /* Remove any stacking overrides */
   .users-table,
   .users-table tbody,
-  .users-table tr,
-  .users-table td {
-    display: block;
-    width: 100% !important;
+  .users-table td,
+  .users-table th {
+    display: table-cell !important; /* Keep tabular structure */
   }
 
-  .users-table tr {
-    margin-bottom: 15px;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 15px;
-  }
-
-  .admin-dashboard.dark .users-table tr {
-    border-color: #334155;
-  }
-
-  .users-table td {
-    text-align: right;
-    padding-left: 50%;
-    position: relative;
-    border: none;
-    border-bottom: 1px solid #e2e8f0;
-  }
-
-  .admin-dashboard.dark .users-table td {
-    border-bottom-color: #334155;
-  }
-
-  .users-table td:last-child {
-    border-bottom: 0;
-  }
-
-  .users-table td:before {
-    content: attr(data-label);
-    position: absolute;
-    left: 15px;
-    width: calc(50% - 30px);
-    padding-right: 10px;
-    text-align: left;
-    font-weight: 600;
-    color: #64748b;
-  }
-
-  .admin-dashboard.dark .users-table td:before {
-    color: #94a3b8;
-  }
-
-  .action-buttons {
-    justify-content: flex-end;
-    margin-top: 10px;
+  /* Optional: Make headers sticky for vertical scroll if needed */
+  .users-table th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #f8fafc; /* Or your theme's background */
   }
 }
 /* Service Management */
@@ -1291,72 +1252,14 @@
     min-width: 100%;
   }
 
-  /* Mobile Table Styles */
+  /* Horizontal scroll instead of stacked layout */
+  .services-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .services-table {
-    border: 0;
-  }
-
-  .services-table thead {
-    display: none;
-  }
-
-  .services-table,
-  .services-table tbody,
-  .services-table tr,
-  .services-table td {
-    display: block;
-    width: 100% !important;
-  }
-
-  .services-table tr {
-    margin-bottom: 15px;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 15px;
-  }
-
-  .admin-dashboard.dark .services-table tr {
-    border-color: #334155;
-  }
-
-  .services-table td {
-    text-align: right;
-    padding-left: 50%;
-    position: relative;
-    border: none;
-    border-bottom: 1px solid #e2e8f0;
-  }
-
-  .admin-dashboard.dark .services-table td {
-    border-bottom-color: #334155;
-  }
-
-  .services-table td:last-child {
-    border-bottom: 0;
-  }
-
-  .services-table td:before {
-    content: attr(data-label);
-    position: absolute;
-    left: 15px;
-    width: calc(50% - 30px);
-    padding-right: 10px;
-    text-align: left;
-    font-weight: 600;
-    color: #64748b;
-  }
-
-  .admin-dashboard.dark .services-table td:before {
-    color: #94a3b8;
-  }
-
-  .action-buttons {
-    justify-content: flex-end;
-    margin-top: 10px;
-  }
-
-  .modal-content {
-    width: 95%;
+    min-width: 600px; /* keeps columns readable on small screens */
   }
 }
 /* Payment Approval */
@@ -1504,67 +1407,13 @@
     min-width: 100%;
   }
 
-  /* Mobile Table Styles */
+  /* Horizontal scroll instead of stacked layout */
+  .payments-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .payments-table {
-    border: 0;
-  }
-
-  .payments-table thead {
-    display: none;
-  }
-
-  .payments-table,
-  .payments-table tbody,
-  .payments-table tr,
-  .payments-table td {
-    display: block;
-    width: 100% !important;
-  }
-
-  .payments-table tr {
-    margin-bottom: 15px;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 15px;
-  }
-
-  .admin-dashboard.dark .payments-table tr {
-    border-color: #334155;
-  }
-
-  .payments-table td {
-    text-align: right;
-    padding-left: 50%;
-    position: relative;
-    border: none;
-    border-bottom: 1px solid #e2e8f0;
-  }
-
-  .admin-dashboard.dark .payments-table td {
-    border-bottom-color: #334155;
-  }
-
-  .payments-table td:last-child {
-    border-bottom: 0;
-  }
-
-  .payments-table td:before {
-    content: attr(data-label);
-    position: absolute;
-    left: 15px;
-    width: calc(50% - 30px);
-    padding-right: 10px;
-    text-align: left;
-    font-weight: 600;
-    color: #64748b;
-  }
-
-  .admin-dashboard.dark .payments-table td:before {
-    color: #94a3b8;
-  }
-
-  .action-buttons {
-    justify-content: flex-end;
-    margin-top: 10px;
+    min-width: 700px; /* keeps columns readable on small screens */
   }
 }

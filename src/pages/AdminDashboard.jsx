@@ -39,9 +39,9 @@ const AdminDashboard = () => {
   });
 
   useEffect(() => {
-    if (!user || user.role !== 'admin') {
+    if (user == null) return;
+    if (!user || user.role != 'admin') {
       navigate('/');
-      return;
     }
 
     // Calculate stats with null checks
