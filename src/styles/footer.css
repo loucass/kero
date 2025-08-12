@@ -1,0 +1,103 @@
+/* Footer Styles */
+.footer {
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+  margin-top: auto;
+}
+
+.footer h5 {
+  color: #667eea;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.footer ul {
+  padding-left: 0;
+}
+
+.footer ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer a {
+  color: #b0b0b0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.footer hr {
+  border-color: rgba(255, 255, 255, 0.1);
+  margin: 2rem 0;
+}
+
+.footer .text-muted {
+  color: #b0b0b0 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 0 1rem;
+  }
+  
+  .footer h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .footer ul li {
+    font-size: 0.9rem;
+  }
+  
+  .footer .text-muted {
+    font-size: 0.85rem;
+  }
+}
+
+/* RTL Support */
+.rtl .footer ul {
+  padding-right: 0;
+  padding-left: 1rem;
+}
+
+/* Animation Effects */
+.footer a {
+  position: relative;
+}
+
+.footer a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #667eea;
+  transition: width 0.3s ease;
+}
+
+.footer a:hover::after {
+  width: 100%;
+}
+
+/* Dark Theme Support */
+.dark-theme .footer {
+  background-color: #0f0f23;
+}
+
+.dark-theme .footer h5 {
+  color: #764ba2;
+}
+
+.dark-theme .footer a:hover {
+  color: #764ba2;
+}
+
+.dark-theme .footer a::after {
+  background-color: #764ba2;
+}

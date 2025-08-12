@@ -1,0 +1,464 @@
+/* Marketing User Landing Page Styles */
+.marketing-landing {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #3498db, #2ecc71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-btn-primary {
+  background: linear-gradient(45deg, #3498db, #2ecc71);
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+}
+
+.hero-btn-secondary {
+  border: 2px solid white;
+  color: white;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.hero-btn-secondary:hover {
+  background-color: white;
+  color: #2c3e50;
+  transform: translateY(-3px);
+}
+
+/* Hero Visual */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+}
+
+.hero-animation {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+}
+
+.partnership-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.central-hub {
+  width: 100px;
+  height: 100px;
+  background: rgba(52, 152, 219, 0.2);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(52, 152, 219, 0.5);
+  position: relative;
+  z-index: 2;
+}
+
+.hub-icon {
+  font-size: 3rem;
+  color: #3498db;
+}
+
+.orbit-nodes {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  animation: rotate 20s linear infinite;
+}
+
+.orbit-node {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: rgba(46, 204, 113, 0.2);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(46, 204, 113, 0.5);
+  top: 50%;
+  left: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+}
+
+.node-icon {
+  font-size: 1.5rem;
+  color: #2ecc71;
+}
+
+/* Benefits Section */
+.benefits-section {
+  padding: 5rem 0;
+  background: var(--light-bg);
+}
+
+.dark-theme .benefits-section {
+  background: var(--dark-bg);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--light-text);
+}
+
+.dark-theme .section-title {
+  color: var(--dark-text);
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #6c757d;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.benefit-card {
+  border: none;
+  border-radius: 15px;
+  background: var(--light-card);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.dark-theme .benefit-card {
+  background: var(--dark-card);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.benefit-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(52, 152, 219, 0.2);
+}
+
+.benefit-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #3498db, #2ecc71);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.benefit-icon-wrapper svg {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.benefit-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--light-text);
+}
+
+.dark-theme .benefit-title {
+  color: var(--dark-text);
+}
+
+.benefit-description {
+  color: #6c757d;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* Policies Section */
+.policies-section {
+  padding: 5rem 0;
+  background: var(--light-bg);
+}
+
+.dark-theme .policies-section {
+  background: var(--dark-bg);
+}
+
+.policies-accordion {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .policies-accordion {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.policies-accordion .accordion-item {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .policies-accordion .accordion-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.policies-accordion .accordion-item:last-child {
+  border-bottom: none;
+}
+
+.policies-accordion .accordion-button {
+  background: var(--light-card);
+  color: var(--light-text);
+  border: none;
+  padding: 1.5rem;
+  font-weight: 600;
+}
+
+.dark-theme .policies-accordion .accordion-button {
+  background: var(--dark-card);
+  color: var(--dark-text);
+}
+
+.policies-accordion .accordion-button:not(.collapsed) {
+  background: linear-gradient(135deg, #3498db, #2ecc71);
+  color: white;
+}
+
+.policies-accordion .accordion-button:focus {
+  box-shadow: none;
+}
+
+.policy-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.policy-icon-small {
+  font-size: 1.2rem;
+  color: #3498db;
+}
+
+.policies-accordion .accordion-button:not(.collapsed) .policy-icon-small {
+  color: white;
+}
+
+.policy-title {
+  font-weight: 600;
+}
+
+.policies-accordion .accordion-body {
+  background: var(--light-card);
+  color: var(--light-text);
+  padding: 1.5rem;
+}
+
+.dark-theme .policies-accordion .accordion-body {
+  background: var(--dark-card);
+  color: var(--dark-text);
+}
+
+.policy-content {
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #3498db 0%, #2ecc71 100%);
+  color: white;
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cta-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.cta-btn {
+  background: linear-gradient(45deg, #2c3e50, #34495e);
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(44, 62, 80, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .hero-visual {
+    min-height: 300px;
+  }
+  
+  .hero-animation {
+    height: 300px;
+  }
+  
+  .central-hub {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .hub-icon {
+    font-size: 2.5rem;
+  }
+  
+  .orbit-nodes {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .orbit-node {
+    width: 40px;
+    height: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+  }
+  
+  .node-icon {
+    font-size: 1.2rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .cta-title {
+    font-size: 2rem;
+  }
+  
+  .policy-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+/* RTL Support */
+.rtl .hero-buttons {
+  flex-direction: row-reverse;
+}
+
+.rtl .policy-header {
+  flex-direction: row-reverse;
+}
+
+.rtl .policies-accordion .accordion-button {
+  text-align: right;
+}
+
+/* Animation Enhancements */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(52, 152, 219, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(52, 152, 219, 0.6); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
