@@ -1,10 +1,16 @@
-/* Modern Wallet Recharge Page Styles */
+/* Modern Wallet Recharge Page Styles with Theme Support */
 .wallet-recharge-page.modern-wallet {
   padding: 2rem 0;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, var(--light-bg) 0%, #e9ecef 100%);
   position: relative;
   overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+/* Dark theme support for wallet recharge page */
+body.dark-theme .wallet-recharge-page.modern-wallet {
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a2e 100%);
 }
 
 .wallet-background {
@@ -124,12 +130,28 @@
   background-clip: text;
 }
 
+/* Dark theme support for wallet title */
+body.dark-theme .wallet-title {
+  background: linear-gradient(45deg, #e0e0e0, #a0a0b0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .wallet-subtitle {
   font-size: 1.2rem;
-  color: #6c757d;
+  color: var(--light-text);
   max-width: 700px;
   margin: 0 auto;
   font-weight: 300;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for wallet subtitle */
+body.dark-theme .wallet-subtitle {
+  color: var(--dark-text);
+  opacity: 0.7;
 }
 
 /* Alert Styles */
@@ -150,11 +172,18 @@
 .modern-form-card {
   border: none;
   border-radius: 20px;
-  background: white;
+  background-color: var(--light-card);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
   animation: slideUp 0.6s ease-out;
+  transition: background-color 0.3s ease;
+}
+
+/* Dark theme support for form card */
+body.dark-theme .modern-form-card {
+  background-color: var(--dark-card);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .modern-form-card::before {
@@ -164,7 +193,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #667eea, #764ba2, #ffd700);
+  background: linear-gradient(90deg, var(--accent-color), #764ba2, #ffd700);
 }
 
 .form-header {
@@ -180,7 +209,7 @@
 .form-icon-bg {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--accent-color), #764ba2);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -196,8 +225,14 @@
 .form-title {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #0f0c29;
+  color: var(--light-text);
   margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for form title */
+body.dark-theme .form-title {
+  color: var(--dark-text);
 }
 
 /* Form Groups */
@@ -228,9 +263,15 @@
 
 .form-group-modern .form-label {
   font-weight: 600;
-  color: #0f0c29;
+  color: var(--light-text);
   margin-bottom: 0.75rem;
   font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for form labels */
+body.dark-theme .form-group-modern .form-label {
+  color: var(--dark-text);
 }
 
 /* Payment Methods */
@@ -247,9 +288,15 @@
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: white;
+  background-color: var(--light-card);
   position: relative;
   overflow: hidden;
+}
+
+/* Dark theme support for payment method */
+body.dark-theme .payment-method {
+  background-color: var(--dark-card);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .payment-method::before {
@@ -259,7 +306,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, var(--accent-color), #764ba2);
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
@@ -270,13 +317,23 @@
   border-color: rgba(102, 126, 234, 0.3);
 }
 
+/* Dark theme support for payment method hover */
+body.dark-theme .payment-method:hover {
+  border-color: rgba(102, 126, 234, 0.5);
+}
+
 .payment-method:hover::before {
   transform: scaleX(1);
 }
 
 .payment-method.selected {
-  border-color: #667eea;
+  border-color: var(--accent-color);
   background: rgba(102, 126, 234, 0.05);
+}
+
+/* Dark theme support for selected payment method */
+body.dark-theme .payment-method.selected {
+  background: rgba(102, 126, 234, 0.15);
 }
 
 .payment-method.selected::before {
@@ -287,7 +344,7 @@
   width: 50px;
   height: 50px;
   margin: 0 auto 1rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--accent-color), #764ba2);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -297,17 +354,31 @@
 }
 
 .method-info h6 {
-  color: #0f0c29;
+  color: var(--light-text);
   margin-bottom: 0.25rem;
   font-weight: 700;
   text-align: center;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for method info title */
+body.dark-theme .method-info h6 {
+  color: var(--dark-text);
 }
 
 .method-info p {
   font-size: 0.9rem;
-  color: #6c757d;
+  color: var(--light-text);
   margin-bottom: 0;
   text-align: center;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for method info text */
+body.dark-theme .method-info p {
+  color: var(--dark-text);
+  opacity: 0.7;
 }
 
 /* Amount Input */
@@ -323,8 +394,14 @@
   left: 1rem;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #667eea;
+  color: var(--accent-color);
   z-index: 1;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for currency symbol */
+body.dark-theme .currency-symbol {
+  color: #8191ff;
 }
 
 .form-control-modern {
@@ -334,14 +411,28 @@
   font-size: 1.2rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  background: #f8f9fa;
+  background-color: var(--light-bg);
+  color: var(--light-text);
   width: 100%;
 }
 
+/* Dark theme support for form control */
+body.dark-theme .form-control-modern {
+  background-color: var(--dark-bg);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--dark-text);
+}
+
 .form-control-modern:focus {
-  border-color: #667eea;
+  border-color: var(--accent-color);
   box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-  background: white;
+  background-color: var(--light-card);
+}
+
+/* Dark theme support for form control focus */
+body.dark-theme .form-control-modern:focus {
+  background-color: var(--dark-bg);
+  border-color: var(--accent-color);
 }
 
 /* Quick Amounts */
@@ -357,15 +448,27 @@
   padding: 0.5rem 1rem;
   font-weight: 600;
   border: 2px solid rgba(102, 126, 234, 0.3);
-  background: white;
-  color: #667eea;
+  background-color: var(--light-card);
+  color: var(--accent-color);
   transition: all 0.3s ease;
+}
+
+/* Dark theme support for quick amount buttons */
+body.dark-theme .quick-amount-btn {
+  background-color: var(--dark-bg);
+  border-color: rgba(102, 126, 234, 0.3);
+  color: #8191ff;
 }
 
 .quick-amount-btn:hover {
   background: rgba(102, 126, 234, 0.1);
-  border-color: #667eea;
+  border-color: var(--accent-color);
   transform: translateY(-2px);
+}
+
+/* Dark theme support for quick amount buttons hover */
+body.dark-theme .quick-amount-btn:hover {
+  background: rgba(102, 126, 234, 0.15);
 }
 
 /* Payment Info */
@@ -377,10 +480,23 @@
   margin-bottom: 1rem;
   display: flex;
   align-items: flex-start;
+  transition: all 0.3s ease;
+}
+
+/* Dark theme support for payment info */
+body.dark-theme .modern-payment-info {
+  background: rgba(102, 126, 234, 0.15);
+  border-color: rgba(102, 126, 234, 0.3);
 }
 
 .modern-payment-info strong {
-  color: #0f0c29;
+  color: var(--light-text);
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for payment info strong text */
+body.dark-theme .modern-payment-info strong {
+  color: var(--dark-text);
 }
 
 /* Input Group Modern */
@@ -393,9 +509,17 @@
 .input-icon {
   position: absolute;
   left: 1rem;
-  color: #6c757d;
+  color: var(--light-text);
   z-index: 2;
   font-size: 1.1rem;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for input icon */
+body.dark-theme .input-icon {
+  color: var(--dark-text);
+  opacity: 0.7;
 }
 
 /* File Upload */
@@ -410,8 +534,19 @@
   overflow: hidden;
 }
 
+/* Dark theme support for file upload */
+body.dark-theme .modern-file-upload {
+  background: rgba(102, 126, 234, 0.05);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
 .modern-file-upload:hover {
-  border-color: #667eea;
+  border-color: var(--accent-color);
+  background: rgba(102, 126, 234, 0.1);
+}
+
+/* Dark theme support for file upload hover */
+body.dark-theme .modern-file-upload:hover {
   background: rgba(102, 126, 234, 0.1);
 }
 
@@ -468,7 +603,7 @@
 
 .upload-icon {
   font-size: 3rem;
-  color: #667eea;
+  color: var(--accent-color);
   margin-bottom: 1rem;
 }
 
@@ -478,14 +613,21 @@
   background: rgba(102, 126, 234, 0.1);
   border-radius: 50px;
   font-size: 0.9rem;
-  color: #667eea;
+  color: var(--accent-color);
   font-weight: 500;
   display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* Dark theme support for file name */
+body.dark-theme .file-name {
+  background: rgba(102, 126, 234, 0.15);
+  color: #8191ff;
 }
 
 /* Submit Button */
 .submit-btn-modern {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--accent-color), #764ba2);
   border: none;
   padding: 1rem 2rem;
   font-weight: 700;
@@ -515,6 +657,11 @@
   overflow: hidden;
   position: relative;
   animation: slideUp 0.6s ease-out 0.1s both;
+}
+
+/* Dark theme support for balance card */
+body.dark-theme .modern-balance-card {
+  background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
 }
 
 .modern-balance-card::before {
@@ -566,11 +713,18 @@
 .modern-instructions-card {
   border: none;
   border-radius: 20px;
-  background: white;
+  background-color: var(--light-card);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
   animation: slideUp 0.6s ease-out 0.2s both;
+  transition: background-color 0.3s ease;
+}
+
+/* Dark theme support for instructions card */
+body.dark-theme .modern-instructions-card {
+  background-color: var(--dark-card);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .modern-instructions-card::before {
@@ -580,7 +734,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, var(--accent-color), #764ba2);
 }
 
 .instructions-header {
@@ -592,7 +746,7 @@
 .instructions-icon-wrapper {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--accent-color), #764ba2);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -608,8 +762,14 @@
 .instructions-title {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #0f0c29;
+  color: var(--light-text);
   margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for instructions title */
+body.dark-theme .instructions-title {
+  color: var(--dark-text);
 }
 
 .instructions-list {
@@ -624,8 +784,16 @@
   margin-bottom: 1rem;
   padding-left: 1.5rem;
   position: relative;
-  color: #495057;
+  color: var(--light-text);
   font-size: 0.95rem;
+  opacity: 0.9;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for instructions list */
+body.dark-theme .instructions-list li {
+  color: var(--dark-text);
+  opacity: 0.8;
 }
 
 .instructions-list li::before {
@@ -635,7 +803,7 @@
   top: 0.5rem;
   width: 8px;
   height: 8px;
-  background: #667eea;
+  background: var(--accent-color);
   border-radius: 50%;
 }
 
@@ -644,7 +812,17 @@
   border: 1px solid rgba(102, 126, 234, 0.2);
   border-radius: 15px;
   padding: 1rem;
-  color: #495057;
+  color: var(--light-text);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+/* Dark theme support for note alert */
+body.dark-theme .modern-note-alert {
+  background: rgba(102, 126, 234, 0.15);
+  border-color: rgba(102, 126, 234, 0.3);
+  color: var(--dark-text);
+  opacity: 0.8;
 }
 
 /* Image Preview Modal */
@@ -653,6 +831,13 @@
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  background-color: var(--light-card);
+  transition: background-color 0.3s ease;
+}
+
+/* Dark theme support for modal content */
+body.dark-theme .modern-modal .modal-content {
+  background-color: var(--dark-card);
 }
 
 .modern-modal .modal-header {
@@ -662,6 +847,11 @@
   padding: 1.5rem;
 }
 
+/* Dark theme support for modal header */
+body.dark-theme .modern-modal .modal-header {
+  background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+}
+
 .modern-modal .modal-title {
   font-weight: 700;
   font-size: 1.5rem;
@@ -669,6 +859,13 @@
 
 .modern-modal .modal-body {
   padding: 2rem;
+  color: var(--light-text);
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for modal body */
+body.dark-theme .modern-modal .modal-body {
+  color: var(--dark-text);
 }
 
 .preview-image {
@@ -684,16 +881,24 @@
 }
 
 .modern-modal .btn-secondary {
-  background: #f8f9fa;
-  border: 2px solid #dee2e6;
-  color: #495057;
+  background: var(--light-bg);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  color: var(--light-text);
   border-radius: 50px;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Dark theme support for modal secondary button */
+body.dark-theme .modern-modal .btn-secondary {
+  background: var(--dark-bg);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--dark-text);
 }
 
 .modern-modal .btn-primary {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--accent-color), #764ba2);
   border: none;
   color: white;
   border-radius: 50px;
@@ -720,36 +925,28 @@
   .wallet-recharge-page.modern-wallet {
     padding: 1rem 0;
   }
-
   .wallet-title {
     font-size: 2.5rem;
   }
-
   .payment-methods {
     flex-direction: column;
   }
-
   .quick-amounts {
     justify-content: center;
   }
-
   .balance-amount {
     font-size: 2rem;
   }
-
   .modern-file-upload {
     padding: 1rem;
   }
-
   .upload-icon {
     font-size: 2rem;
   }
-
   .form-header {
     flex-direction: column;
     text-align: center;
   }
-
   .form-icon-wrapper {
     margin-right: 0;
     margin-bottom: 1rem;
@@ -760,29 +957,23 @@
   .wallet-title {
     font-size: 2rem;
   }
-
   .form-title {
     font-size: 1.5rem;
   }
-
   .balance-icon-wrapper {
     width: 50px;
     height: 50px;
   }
-
   .balance-icon {
     font-size: 1.5rem;
   }
-
   .balance-amount {
     font-size: 1.8rem;
   }
-
   .instructions-icon-wrapper {
     width: 40px;
     height: 40px;
   }
-
   .instructions-icon {
     font-size: 1.2rem;
   }
@@ -792,50 +983,40 @@
 .rtl .payment-methods {
   flex-direction: row-reverse;
 }
-
 .rtl .currency-symbol {
   left: auto;
   right: 1rem;
 }
-
 .rtl .form-control-modern {
   padding-left: 1rem;
   padding-right: 3rem;
 }
-
 .rtl .input-icon {
   left: auto;
   right: 1rem;
 }
-
 .rtl .balance-header {
   flex-direction: row-reverse;
 }
-
 .rtl .balance-icon-wrapper {
   margin-right: 0;
   margin-left: 1rem;
 }
-
 .rtl .instructions-header {
   flex-direction: row-reverse;
 }
-
 .rtl .instructions-icon-wrapper {
   margin-right: 0;
   margin-left: 1rem;
 }
-
 .rtl .instructions-list li {
   padding-left: 0;
   padding-right: 1.5rem;
 }
-
 .rtl .instructions-list li::before {
   left: auto;
   right: 0;
 }
-
 .rtl .badge-icon {
   margin-right: 0;
   margin-left: 0.5rem;
@@ -851,147 +1032,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Dark Theme Support for Wallet Recharge Page */
-body.dark-theme .wallet-recharge-page.modern-wallet {
-  background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
-}
-
-body.dark-theme .wallet-title {
-  background: linear-gradient(45deg, #e0e0e0, #a0a0b0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-body.dark-theme .wallet-subtitle {
-  color: #a0a0b0;
-}
-
-body.dark-theme .modern-form-card {
-  background: #1a1a2e;
-  color: #e0e0e0;
-}
-
-body.dark-theme .form-title {
-  color: #e0e0e0;
-}
-
-body.dark-theme .form-group-modern .form-label {
-  color: #e0e0e0;
-}
-
-body.dark-theme .payment-method {
-  background: #1a1a2e;
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-body.dark-theme .payment-method:hover {
-  border-color: rgba(102, 126, 234, 0.5);
-}
-
-body.dark-theme .payment-method.selected {
-  background: rgba(102, 126, 234, 0.15);
-}
-
-body.dark-theme .method-info h6 {
-  color: #e0e0e0;
-}
-
-body.dark-theme .method-info p {
-  color: #a0a0b0;
-}
-
-body.dark-theme .form-control-modern {
-  background: #0a0a1a;
-  border-color: rgba(255, 255, 255, 0.1);
-  color: #e0e0e0;
-}
-
-body.dark-theme .form-control-modern:focus {
-  background: #0a0a1a;
-  border-color: #667eea;
-}
-
-body.dark-theme .currency-symbol {
-  color: #8191ff;
-}
-
-body.dark-theme .quick-amount-btn {
-  background: #0a0a1a;
-  border-color: rgba(102, 126, 234, 0.3);
-  color: #8191ff;
-}
-
-body.dark-theme .quick-amount-btn:hover {
-  background: rgba(102, 126, 234, 0.15);
-}
-
-body.dark-theme .modern-payment-info {
-  background: rgba(102, 126, 234, 0.15);
-  border-color: rgba(102, 126, 234, 0.3);
-}
-
-body.dark-theme .modern-payment-info strong {
-  color: #e0e0e0;
-}
-
-body.dark-theme .input-icon {
-  color: #a0a0b0;
-}
-
-body.dark-theme .modern-file-upload {
-  background: rgba(102, 126, 234, 0.05);
-  border-color: rgba(102, 126, 234, 0.3);
-}
-
-body.dark-theme .modern-file-upload:hover {
-  background: rgba(102, 126, 234, 0.1);
-}
-
-body.dark-theme .file-name {
-  background: rgba(102, 126, 234, 0.15);
-  color: #8191ff;
-}
-
-body.dark-theme .modern-instructions-card {
-  background: #1a1a2e;
-}
-
-body.dark-theme .instructions-title {
-  color: #e0e0e0;
-}
-
-body.dark-theme .instructions-list li {
-  color: #b0b0c0;
-}
-
-body.dark-theme .instructions-list li::before {
-  background: #667eea;
-}
-
-body.dark-theme .modern-note-alert {
-  background: rgba(102, 126, 234, 0.15);
-  border-color: rgba(102, 126, 234, 0.3);
-  color: #b0b0c0;
-}
-
-body.dark-theme .modern-modal .modal-content {
-  background: #1a1a2e;
-}
-
-body.dark-theme .modern-modal .modal-body {
-  color: #e0e0e0;
-}
-
-body.dark-theme .modern-modal .btn-secondary {
-  background: #0a0a1a;
-  border-color: #3a3a4e;
-  color: #e0e0e0;
-}
-
-body.dark-theme .modern-modal .btn-secondary:hover {
-  background: #1a1a2e;
-  border-color: #4a4a5e;
 }

@@ -33,19 +33,19 @@ const UserDashboard = () => {
           subscriptions: [
             {
               id: 1,
-              name: 'Neural Analytics Pro',
+              name: t('neuralAnalyticsPro'),
               price: 99.99,
               status: 'active',
               nextBilling: '2024-02-15',
-              features: ['Advanced AI', 'Real-time Processing', 'Priority Support']
+              features: [t('advancedAI'), t('realTimeProcessing'), t('prioritySupport')]
             },
             {
               id: 2,
-              name: 'Quantum Computing',
+              name: t('quantumComputing'),
               price: 299.99,
               status: 'active',
               nextBilling: '2024-02-20',
-              features: ['Quantum Algorithms', 'High Performance', 'Dedicated Resources']
+              features: [t('quantumAlgorithms'), t('highPerformance'), t('dedicatedResources')]
             }
           ],
           usageStats: {
@@ -54,9 +54,8 @@ const UserDashboard = () => {
             bandwidth: 94.2
           },
           achievements: [
-            // { id: 1, title: 'Early Adopter', icon: <FaStar />, description: 'Joined in the first month' },
-            { id: 2, title: 'Power User', icon: <FaTrophy />, description: 'Over 1M API calls' },
-            { id: 3, title: 'Innovation Leader', icon: <FaFire />, description: 'Using advanced features' }
+            { id: 2, title: t('powerUser'), icon: <FaTrophy />, description: t('over1MApiCalls') },
+            { id: 3, title: t('innovationLeader'), icon: <FaFire />, description: t('usingAdvancedFeatures') }
           ],
           loading: false,
           error: ''
@@ -65,13 +64,12 @@ const UserDashboard = () => {
         setUserData(prev => ({
           ...prev,
           loading: false,
-          error: 'Failed to load user data'
+          error: t('error')
         }));
       }
     };
-
     fetchUserData();
-  }, []);
+  }, [t]);
 
   const { balance, subscriptions, usageStats, achievements, loading, error } = userData;
 
@@ -106,27 +104,27 @@ const UserDashboard = () => {
                     <span>PREMIUM USER</span>
                   </div>
                   <h1 className="dashboard-title">
-                    Welcome Back!
+                    {t('welcomeBack')}
                   </h1>
                   <p className="dashboard-subtitle">
-                    Your AI-powered enterprise dashboard is running at peak performance
+                    {t('dashboardSubtitle')}
                   </p>
                 </div>
                 <div className="header-stats">
                   <div className="header-stat">
                     <div className="stat-value">${balance.toFixed(2)}</div>
-                    <div className="stat-label">Account Balance</div>
+                    <div className="stat-label">{t('accountBalance')}</div>
                   </div>
                   <div className="header-stat">
                     <div className="stat-value">{subscriptions.length}</div>
-                    <div className="stat-label">Active Services</div>
+                    <div className="stat-label">{t('activeServices')}</div>
                   </div>
                 </div>
               </div>
             </div>
           </Col>
         </Row>
-
+        
         {error && (
           <Row className="mb-4">
             <Col>
@@ -134,7 +132,7 @@ const UserDashboard = () => {
             </Col>
           </Row>
         )}
-
+        
         {/* Premium Upgrade Notification */}
         <Row className="mb-4">
           <Col>
@@ -145,21 +143,21 @@ const UserDashboard = () => {
                     <FaGem className="premium-icon" />
                   </div>
                   <div className="premium-text">
-                    <strong>Enterprise Elite Upgrade Available</strong>
-                    <p className="mb-0">Unlock unlimited quantum processing and dedicated AI infrastructure</p>
+                    <strong>{t('enterpriseEliteUpgrade')}</strong>
+                    <p className="mb-0">{t('unlockQuantumProcessing')}</p>
                   </div>
                 </div>
                 <div className="premium-right">
                   <Button variant="premium" size="lg" as={Link} to="/services">
                     <FaRocket className="me-2" />
-                    Upgrade Now
+                    {t('upgradeNow')}
                   </Button>
                 </div>
               </div>
             </Alert>
           </Col>
         </Row>
-
+        
         {/* Stats Cards */}
         <Row className="mb-4">
           <Col md={6} lg={3}>
@@ -169,47 +167,24 @@ const UserDashboard = () => {
                   <div className="balance-icon-wrapper">
                     <FaWallet className="balance-icon" />
                   </div>
-                  <span className="balance-label">Account Balance</span>
+                  <span className="balance-label">{t('accountBalance')}</span>
                 </div>
                 <div className="balance-amount">
                   ${balance.toFixed(2)}
                 </div>
                 <div className="balance-subtitle">
-                  Available for services
+                  {t('availableForServices')}
                 </div>
                 <div className="balance-actions">
                   <Button variant="outline-light" size="sm" as={Link} to="/wallet">
                     <FaBolt className="me-1" />
-                    Add Funds
+                    {t('addFunds')}
                   </Button>
                 </div>
               </Card.Body>
             </Card>
           </Col>
-
-          {/* <Col md={6} lg={3}>
-            <Card className="stats-card">
-              <Card.Body>
-                <div className="stats-header">
-                  <div className="stats-icon-wrapper">
-                    <FaChartLine className="stats-icon" />
-                  </div>
-                  <span className="stats-label">API Calls</span>
-                </div>
-                <div className="stats-value">
-                  {(usageStats.apiCalls / 1000000).toFixed(1)}M
-                </div>
-                <div className="stats-subtitle">
-                  This month
-                </div>
-                <div className="progress-bar-wrapper">
-                  <ProgressBar now={85} variant="success" />
-                  <small>85% of limit</small>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col> */}
-
+          
           <Col md={6} lg={3}>
             <Card className="status-card">
               <Card.Body>
@@ -217,12 +192,12 @@ const UserDashboard = () => {
                   <div className="status-icon-wrapper">
                     <FaCrown className="status-icon" />
                   </div>
-                  <span className="status-label">Account Status</span>
+                  <span className="status-label">{t('accountStatus')}</span>
                 </div>
                 <div className="status-value">
                   <Badge bg="success" className="status-badge">
                     <FaStar className="me-1" />
-                    Premium
+                    {t('premium')}
                   </Badge>
                 </div>
                 <div className="status-subtitle">
@@ -231,7 +206,7 @@ const UserDashboard = () => {
               </Card.Body>
             </Card>
           </Col>
-
+          
           <Col md={6} lg={3}>
             <Card className="performance-card">
               <Card.Body>
@@ -239,23 +214,23 @@ const UserDashboard = () => {
                   <div className="performance-icon-wrapper">
                     <FaRocket className="performance-icon" />
                   </div>
-                  <span className="performance-label">Performance</span>
+                  <span className="performance-label">{t('performance')}</span>
                 </div>
                 <div className="performance-value">
                   99.9%
                 </div>
                 <div className="performance-subtitle">
-                  Uptime this month
+                  {t('uptime')}
                 </div>
                 <div className="performance-indicator">
                   <div className="indicator-dot active"></div>
-                  <span>Optimal</span>
+                  <span>{t('optimal')}</span>
                 </div>
               </Card.Body>
             </Card>
           </Col>
         </Row>
-
+        
         {/* Subscriptions Section */}
         <Row className="mb-4">
           <Col>
@@ -264,11 +239,11 @@ const UserDashboard = () => {
                 <div className="subscriptions-header">
                   <div className="header-left">
                     <FaCrown className="header-icon me-2" />
-                    <h5 className="mb-0">Active Subscriptions</h5>
+                    <h5 className="mb-0">{t('activeSubscriptions')}</h5>
                   </div>
                   <Button variant="outline-primary" size="sm" as={Link} to="/services">
                     <FaStar className="me-1" />
-                    Browse Services
+                    {t('browseServices')}
                   </Button>
                 </div>
               </Card.Header>
@@ -276,11 +251,11 @@ const UserDashboard = () => {
                 {subscriptions.length === 0 ? (
                   <div className="text-center py-5">
                     <FaCrown className="no-subscriptions-icon mb-3" />
-                    <h5>No Active Subscriptions</h5>
-                    <p className="text-muted">Subscribe to our premium services to unlock advanced features</p>
+                    <h5>{t('noActiveSubscriptions')}</h5>
+                    <p className="text-muted">{t('subscribeToPremium')}</p>
                     <Button variant="primary" as={Link} to="/services">
                       <FaRocket className="me-2" />
-                      Explore Services
+                      {t('exploreServices')}
                     </Button>
                   </div>
                 ) : (
@@ -301,7 +276,7 @@ const UserDashboard = () => {
                         </div>
                         <div className="subscription-details">
                           <div className="detail-item">
-                            <span className="detail-label">Next Billing:</span>
+                            <span className="detail-label">{t('nextBilling')}:</span>
                             <span className="detail-value">{subscription.nextBilling}</span>
                           </div>
                           <div className="subscription-features">
@@ -321,7 +296,7 @@ const UserDashboard = () => {
             </Card>
           </Col>
         </Row>
-
+        
         {/* Achievements Section */}
         <Row className="mb-4">
           <Col>
@@ -329,7 +304,7 @@ const UserDashboard = () => {
               <Card.Header>
                 <div className="achievements-header">
                   <FaTrophy className="header-icon me-2" />
-                  <h5 className="mb-0">Your Achievements</h5>
+                  <h5 className="mb-0">{t('yourAchievements')}</h5>
                 </div>
               </Card.Header>
               <Card.Body>
@@ -350,7 +325,7 @@ const UserDashboard = () => {
             </Card>
           </Col>
         </Row>
-
+        
         {/* Quick Actions */}
         <Row>
           <Col md={6} lg={3}>
@@ -359,59 +334,56 @@ const UserDashboard = () => {
                 <div className="action-icon-wrapper">
                   <FaWallet className="action-icon" />
                 </div>
-                <h6>Wallet</h6>
-                <p className="text-muted small">Manage your funds</p>
+                <h6>{t('wallet')}</h6>
+                <p className="text-muted small">{t('manageYourFunds')}</p>
                 <Button variant="primary" size="sm" as={Link} to="/wallet">
                   <FaBolt className="me-1" />
-                  View Wallet
+                  {t('viewWallet')}
                 </Button>
               </Card.Body>
             </Card>
           </Col>
-
           <Col md={6} lg={3}>
             <Card className="action-card">
               <Card.Body className="text-center">
                 <div className="action-icon-wrapper">
                   <FaCrown className="action-icon" />
                 </div>
-                <h6>Services</h6>
-                <p className="text-muted small">Browse premium services</p>
+                <h6>{t('services')}</h6>
+                <p className="text-muted small">{t('browsePremiumServices')}</p>
                 <Button variant="primary" size="sm" as={Link} to="/services">
                   <FaStar className="me-1" />
-                  View Services
+                  {t('viewServices')}
                 </Button>
               </Card.Body>
             </Card>
           </Col>
-
           <Col md={6} lg={3}>
             <Card className="action-card">
               <Card.Body className="text-center">
                 <div className="action-icon-wrapper">
                   <FaChartLine className="action-icon" />
                 </div>
-                <h6>Analytics</h6>
-                <p className="text-muted small">Advanced insights</p>
+                <h6>{t('analytics')}</h6>
+                <p className="text-muted small">{t('advancedInsights')}</p>
                 <Button variant="primary" size="sm">
                   <FaRocket className="me-1" />
-                  Coming Soon
+                  {t('comingSoon')}
                 </Button>
               </Card.Body>
             </Card>
           </Col>
-
           <Col md={6} lg={3}>
             <Card className="action-card">
               <Card.Body className="text-center">
                 <div className="action-icon-wrapper">
                   <FaCog className="action-icon" />
                 </div>
-                <h6>Settings</h6>
-                <p className="text-muted small">Account preferences</p>
+                <h6>{t('settings')}</h6>
+                <p className="text-muted small">{t('accountPreferences')}</p>
                 <Button variant="primary" size="sm">
                   <FaGem className="me-1" />
-                  Settings
+                  {t('settings')}
                 </Button>
               </Card.Body>
             </Card>

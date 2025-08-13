@@ -1,9 +1,15 @@
-/* User Dashboard Styles - Enhanced Premium Version */
+/* User Dashboard Styles - Enhanced Premium Version with Theme Support */
 .dashboard-page {
   padding: 2rem 0;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, var(--light-bg) 0%, #e9ecef 100%);
   position: relative;
+  transition: background-color 0.3s ease;
+}
+
+/* Dark theme support for dashboard page */
+body.dark-theme .dashboard-page {
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a2e 100%);
 }
 
 .dashboard-page::before {
@@ -26,6 +32,11 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 10px 40px rgba(15, 12, 41, 0.3);
+}
+
+/* Dark theme support for dashboard header */
+body.dark-theme .dashboard-header {
+  background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
 }
 
 .dashboard-header::before {
@@ -76,7 +87,6 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   animation: badgeFloat 3s ease-in-out infinite;
-  -webkit-animation: badgeFloat 3s ease-in-out infinite;
 }
 
 .badge-icon {
@@ -116,10 +126,19 @@
   background-clip: text;
 }
 
+/* Dark theme support for dashboard title */
+body.dark-theme .dashboard-title {
+  background: linear-gradient(45deg, #e0e0e0, #a0a0b0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .dashboard-subtitle {
   font-size: 1.1rem;
   opacity: 0.9;
   margin-bottom: 0;
+  color: white;
 }
 
 .header-stats {
@@ -143,11 +162,12 @@
   opacity: 0.8;
   text-transform: uppercase;
   letter-spacing: 1px;
+  color: white;
 }
 
 /* Premium Notification */
 .premium-notification {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--accent-color) 0%, #764ba2 100%);
   border: none;
   border-radius: 20px;
   padding: 0;
@@ -230,11 +250,20 @@
 .performance-card {
   border: none;
   border-radius: 20px;
-  background: white;
+  background-color: var(--light-card);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, background-color 0.3s ease;
   overflow: hidden;
   position: relative;
+}
+
+/* Dark theme support for stats cards */
+body.dark-theme .balance-card,
+body.dark-theme .stats-card,
+body.dark-theme .status-card,
+body.dark-theme .performance-card {
+  background-color: var(--dark-card);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .balance-card::before {
@@ -254,7 +283,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, var(--accent-color), #764ba2);
 }
 
 .status-card::before {
@@ -264,7 +293,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #28a745, #20c997);
+  background: linear-gradient(90deg, var(--success-color), #20c997);
 }
 
 .performance-card::before {
@@ -274,7 +303,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #fd7e14, #ffc107);
+  background: linear-gradient(90deg, var(--warning-color), #ffc107);
 }
 
 .balance-card:hover,
@@ -313,15 +342,15 @@
 }
 
 .stats-icon-wrapper {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--accent-color), #764ba2);
 }
 
 .status-icon-wrapper {
-  background: linear-gradient(135deg, #28a745, #20c997);
+  background: linear-gradient(135deg, var(--success-color), #20c997);
 }
 
 .performance-icon-wrapper {
-  background: linear-gradient(135deg, #fd7e14, #ffc107);
+  background: linear-gradient(135deg, var(--warning-color), #ffc107);
 }
 
 .balance-icon,
@@ -337,10 +366,21 @@
 .status-label,
 .performance-label {
   font-size: 0.9rem;
-  color: #6c757d;
+  color: var(--light-text);
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for labels */
+body.dark-theme .balance-label,
+body.dark-theme .stats-label,
+body.dark-theme .status-label,
+body.dark-theme .performance-label {
+  color: var(--dark-text);
+  opacity: 0.7;
 }
 
 .balance-amount,
@@ -350,6 +390,16 @@
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
+  color: var(--light-text);
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for values */
+body.dark-theme .balance-amount,
+body.dark-theme .stats-value,
+body.dark-theme .status-value,
+body.dark-theme .performance-value {
+  color: var(--dark-text);
 }
 
 .balance-amount {
@@ -357,15 +407,15 @@
 }
 
 .stats-value {
-  color: #667eea;
+  color: var(--accent-color);
 }
 
 .status-value {
-  color: #28a745;
+  color: var(--success-color);
 }
 
 .performance-value {
-  color: #fd7e14;
+  color: var(--warning-color);
 }
 
 .balance-subtitle,
@@ -373,8 +423,19 @@
 .status-subtitle,
 .performance-subtitle {
   font-size: 0.9rem;
-  color: #6c757d;
+  color: var(--light-text);
   margin-bottom: 1rem;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for subtitles */
+body.dark-theme .balance-subtitle,
+body.dark-theme .stats-subtitle,
+body.dark-theme .status-subtitle,
+body.dark-theme .performance-subtitle {
+  color: var(--dark-text);
+  opacity: 0.7;
 }
 
 .balance-actions {
@@ -396,7 +457,13 @@
 .progress-bar-wrapper .progress {
   height: 8px;
   border-radius: 4px;
-  background: #e9ecef;
+  background-color: var(--light-bg);
+  transition: background-color 0.3s ease;
+}
+
+/* Dark theme support for progress bar */
+body.dark-theme .progress-bar-wrapper .progress {
+  background-color: var(--dark-bg);
 }
 
 .progress-bar-wrapper small {
@@ -404,7 +471,15 @@
   text-align: center;
   margin-top: 0.5rem;
   font-size: 0.8rem;
-  color: #6c757d;
+  color: var(--light-text);
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for progress bar text */
+body.dark-theme .progress-bar-wrapper small {
+  color: var(--dark-text);
+  opacity: 0.7;
 }
 
 .status-badge {
@@ -425,26 +500,39 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #dc3545;
+  background: var(--danger-color);
   animation: pulse 2s ease-in-out infinite;
 }
 
 .indicator-dot.active {
-  background: #28a745;
+  background: var(--success-color);
 }
 
 /* Subscriptions Card */
 .subscriptions-card {
   border: none;
   border-radius: 20px;
-  background: white;
+  background-color: var(--light-card);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+/* Dark theme support for subscriptions card */
+body.dark-theme .subscriptions-card {
+  background-color: var(--dark-card);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .subscriptions-card .card-header {
   background: transparent;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
+  transition: border-color 0.3s ease;
+}
+
+/* Dark theme support for subscriptions header */
+body.dark-theme .subscriptions-card .card-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 .subscriptions-header {
@@ -454,13 +542,19 @@
 }
 
 .header-icon {
-  color: #667eea;
+  color: var(--accent-color);
 }
 
 .subscriptions-card h5 {
-  color: #0f0c29;
+  color: var(--light-text);
   margin-bottom: 0;
   font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for subscriptions title */
+body.dark-theme .subscriptions-card h5 {
+  color: var(--dark-text);
 }
 
 .subscriptions-grid {
@@ -470,11 +564,17 @@
 }
 
 .subscription-card {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, var(--light-bg) 0%, #e9ecef 100%);
   border-radius: 15px;
   padding: 1.5rem;
   border: 1px solid rgba(102, 126, 234, 0.1);
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, background-color 0.3s ease;
+}
+
+/* Dark theme support for subscription card */
+body.dark-theme .subscription-card {
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a2e 100%);
+  border-color: rgba(102, 126, 234, 0.2);
 }
 
 .subscription-card:hover {
@@ -493,7 +593,7 @@
 .subscription-icon {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--accent-color), #764ba2);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -511,13 +611,19 @@
 .subscription-name {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #0f0c29;
+  color: var(--light-text);
   margin-bottom: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for subscription name */
+body.dark-theme .subscription-name {
+  color: var(--dark-text);
 }
 
 .subscription-price {
   font-size: 0.9rem;
-  color: #667eea;
+  color: var(--accent-color);
   font-weight: 600;
   margin-bottom: 0;
 }
@@ -539,13 +645,27 @@
 
 .detail-label {
   font-size: 0.9rem;
-  color: #6c757d;
+  color: var(--light-text);
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for detail label */
+body.dark-theme .detail-label {
+  color: var(--dark-text);
+  opacity: 0.7;
 }
 
 .detail-value {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #0f0c29;
+  color: var(--light-text);
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for detail value */
+body.dark-theme .detail-value {
+  color: var(--dark-text);
 }
 
 .subscription-features {
@@ -560,11 +680,18 @@
   align-items: center;
   gap: 0.25rem;
   background: rgba(102, 126, 234, 0.1);
-  color: #667eea;
+  color: var(--accent-color);
   padding: 0.25rem 0.75rem;
   border-radius: 50px;
   font-size: 0.8rem;
   font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Dark theme support for feature tag */
+body.dark-theme .feature-tag {
+  background: rgba(102, 126, 234, 0.2);
+  color: #8191ff;
 }
 
 .feature-icon {
@@ -573,7 +700,7 @@
 
 .no-subscriptions-icon {
   font-size: 4rem;
-  color: #667eea;
+  color: var(--accent-color);
   opacity: 0.3;
   margin-bottom: 1rem;
 }
@@ -582,14 +709,27 @@
 .achievements-card {
   border: none;
   border-radius: 20px;
-  background: white;
+  background-color: var(--light-card);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+/* Dark theme support for achievements card */
+body.dark-theme .achievements-card {
+  background-color: var(--dark-card);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .achievements-card .card-header {
   background: transparent;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
+  transition: border-color 0.3s ease;
+}
+
+/* Dark theme support for achievements header */
+body.dark-theme .achievements-card .card-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 .achievements-header {
@@ -598,9 +738,15 @@
 }
 
 .achievements-header h5 {
-  color: #0f0c29;
+  color: var(--light-text);
   margin-bottom: 0;
   font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for achievements title */
+body.dark-theme .achievements-header h5 {
+  color: var(--dark-text);
 }
 
 .achievements-grid {
@@ -614,10 +760,16 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, var(--light-bg) 0%, #e9ecef 100%);
   border-radius: 15px;
   border: 1px solid rgba(255, 215, 0, 0.2);
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, background-color 0.3s ease;
+}
+
+/* Dark theme support for achievement item */
+body.dark-theme .achievement-item {
+  background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a2e 100%);
+  border-color: rgba(255, 215, 0, 0.3);
 }
 
 .achievement-item:hover {
@@ -647,26 +799,46 @@
 .achievement-title {
   font-size: 1rem;
   font-weight: 700;
-  color: #0f0c29;
+  color: var(--light-text);
   margin-bottom: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for achievement title */
+body.dark-theme .achievement-title {
+  color: var(--dark-text);
 }
 
 .achievement-description {
   font-size: 0.9rem;
-  color: #6c757d;
+  color: var(--light-text);
   margin-bottom: 0;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for achievement description */
+body.dark-theme .achievement-description {
+  color: var(--dark-text);
+  opacity: 0.7;
 }
 
 /* Action Cards */
 .action-card {
   border: none;
   border-radius: 20px;
-  background: white;
+  background-color: var(--light-card);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, background-color 0.3s ease;
   cursor: pointer;
   position: relative;
   overflow: hidden;
+}
+
+/* Dark theme support for action card */
+body.dark-theme .action-card {
+  background-color: var(--dark-card);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .action-card::before {
@@ -676,7 +848,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #667eea, #764ba2, #ffd700);
+  background: linear-gradient(90deg, var(--accent-color), #764ba2, #ffd700);
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
@@ -698,7 +870,7 @@
   width: 70px;
   height: 70px;
   margin: 0 auto 1rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--accent-color), #764ba2);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -718,15 +890,29 @@
 }
 
 .action-card h6 {
-  color: #0f0c29;
+  color: var(--light-text);
   margin-bottom: 0.5rem;
   font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for action card title */
+body.dark-theme .action-card h6 {
+  color: var(--dark-text);
 }
 
 .action-card p {
-  color: #6c757d;
+  color: var(--light-text);
   margin-bottom: 1rem;
   font-size: 0.9rem;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for action card text */
+body.dark-theme .action-card p {
+  color: var(--dark-text);
+  opacity: 0.7;
 }
 
 .action-card .btn {
@@ -734,7 +920,7 @@
   padding: 0.5rem 1rem;
   font-weight: 600;
   font-size: 0.8rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, var(--accent-color), #764ba2);
   border: none;
   color: white;
   transition: all 0.3s ease;
@@ -759,42 +945,34 @@
   .dashboard-page {
     padding: 1rem 0;
   }
-
   .header-content {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
   }
-
   .header-stats {
     justify-content: center;
   }
-
   .dashboard-title {
     font-size: 2rem;
   }
-
   .balance-amount,
   .stats-value,
   .status-value,
   .performance-value {
     font-size: 1.5rem;
   }
-
   .premium-content {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
   }
-
   .subscriptions-grid {
     grid-template-columns: 1fr;
   }
-
   .achievements-grid {
     grid-template-columns: 1fr;
   }
-
   .action-card {
     margin-bottom: 1rem;
   }
@@ -804,16 +982,13 @@
   .dashboard-title {
     font-size: 1.8rem;
   }
-
   .header-stats {
     flex-direction: column;
     gap: 1rem;
   }
-
   .subscription-card {
     padding: 1rem;
   }
-
   .achievement-item {
     flex-direction: column;
     text-align: center;
@@ -825,20 +1000,16 @@
 .rtl .header-content {
   flex-direction: row-reverse;
 }
-
 .rtl .premium-left {
   flex-direction: row-reverse;
 }
-
 .rtl .subscription-header {
   flex-direction: row-reverse;
 }
-
 .rtl .subscription-info {
   margin-left: 0;
   margin-right: 1rem;
 }
-
 .rtl .achievement-item {
   flex-direction: row-reverse;
 }
@@ -868,27 +1039,35 @@
 .stats-card:nth-child(2) {
   animation-delay: 0.1s;
 }
+
 .status-card:nth-child(3) {
   animation-delay: 0.2s;
 }
+
 .performance-card:nth-child(4) {
   animation-delay: 0.3s;
 }
+
 .subscriptions-card {
   animation-delay: 0.4s;
 }
+
 .achievements-card {
   animation-delay: 0.5s;
 }
+
 .action-card:nth-child(1) {
   animation-delay: 0.6s;
 }
+
 .action-card:nth-child(2) {
   animation-delay: 0.7s;
 }
+
 .action-card:nth-child(3) {
   animation-delay: 0.8s;
 }
+
 .action-card:nth-child(4) {
   animation-delay: 0.9s;
 }
@@ -901,106 +1080,4 @@
   50% {
     opacity: 0.5;
   }
-}
-/* Dark Theme Fixes for Dashboard */
-body.dark-theme .dashboard-page {
-  background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
-}
-
-body.dark-theme .dashboard-title {
-  background: linear-gradient(45deg, #e0e0e0, #a0a0b0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-body.dark-theme .dashboard-subtitle {
-  color: #a0a0b0;
-}
-
-body.dark-theme .header-stat .stat-label {
-  color: #a0a0b0;
-}
-
-body.dark-theme .balance-card,
-body.dark-theme .stats-card,
-body.dark-theme .status-card,
-body.dark-theme .performance-card {
-  background: #1a1a2e;
-  color: #e0e0e0;
-}
-
-body.dark-theme .balance-label,
-body.dark-theme .stats-label,
-body.dark-theme .status-label,
-body.dark-theme .performance-label {
-  color: #a0a0b0;
-}
-
-body.dark-theme .balance-subtitle,
-body.dark-theme .stats-subtitle,
-body.dark-theme .status-subtitle,
-body.dark-theme .performance-subtitle {
-  color: #a0a0b0;
-}
-
-body.dark-theme .subscriptions-card,
-body.dark-theme .achievements-card {
-  background: #1a1a2e;
-  color: #e0e0e0;
-}
-
-body.dark-theme .subscriptions-header h5,
-body.dark-theme .achievements-header h5 {
-  color: #e0e0e0;
-}
-
-body.dark-theme .subscription-name {
-  color: #e0e0e0;
-}
-
-body.dark-theme .subscription-price {
-  color: #8191ff;
-}
-
-body.dark-theme .detail-label {
-  color: #a0a0b0;
-}
-
-body.dark-theme .detail-value {
-  color: #e0e0e0;
-}
-
-body.dark-theme .achievement-title {
-  color: #e0e0e0;
-}
-
-body.dark-theme .achievement-description {
-  color: #a0a0b0;
-}
-
-body.dark-theme .action-card {
-  background: #1a1a2e;
-  color: #e0e0e0;
-}
-
-body.dark-theme .action-card h6 {
-  color: #e0e0e0;
-}
-
-body.dark-theme .action-card p {
-  color: #a0a0b0;
-}
-
-body.dark-theme .feature-tag {
-  background: rgba(102, 126, 234, 0.15);
-  color: #8191ff;
-}
-
-body.dark-theme .progress-bar-wrapper small {
-  color: #a0a0b0;
-}
-
-body.dark-theme .form-check-label {
-  color: #a0a0b0;
 }

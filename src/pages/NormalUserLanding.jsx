@@ -7,47 +7,44 @@ import '../styles/normal-user-landing.css';
 
 const NormalUserLanding = () => {
   const { t } = useLanguage();
-
   const features = [
     {
       icon: <FaBrain className="feature-icon" />,
-      title: 'Neural Intelligence',
-      description: 'Advanced neural networks that learn and adapt to your unique business patterns with unprecedented accuracy.'
+      title: t('neuralIntelligence'),
+      description: t('neuralIntelligenceDesc')
     },
     {
       icon: <FaStar className="feature-icon" />,
-      title: 'Quantum Processing',
-      description: 'Harness the power of quantum-inspired algorithms for lightning-fast data processing and insights.'
+      title: t('quantumProcessing'),
+      description: t('quantumProcessingDesc')
     },
     {
       icon: <FaShieldAlt className="feature-icon" />,
-      title: 'Military-Grade Security',
-      description: 'Enterprise-level encryption with biometric authentication and real-time threat detection.'
+      title: t('militaryGradeSecurity'),
+      description: t('militaryGradeSecurityDesc')
     },
     {
       icon: <FaRocket className="feature-icon" />,
-      title: 'Hypersonic Performance',
-      description: 'Sub-millisecond response times with our proprietary optimization technology.'
+      title: t('hypersonicPerformance'),
+      description: t('hypersonicPerformanceDesc')
     },
     {
       icon: <FaGem className="feature-icon" />,
-      title: 'Predictive Analytics',
-      description: 'Forecast trends and opportunities with 99.9% accuracy using our advanced ML models.'
+      title: t('predictiveAnalytics'),
+      description: t('predictiveAnalyticsDesc')
     },
     {
       icon: <FaCrown className="feature-icon" />,
-      title: 'Premium Support',
-      description: '24/7 dedicated support with AI-powered assistance and human experts.'
+      title: t('premiumSupport'),
+      description: t('premiumSupportDesc')
     }
   ];
-
   const stats = [
-    { value: '99.9%', label: 'Uptime', icon: <FaStar className="stat-icon" /> },
-    { value: '50M+', label: 'API Calls', icon: <FaChartLine className="stat-icon" /> },
-    { value: '1ms', label: 'Response Time', icon: <FaRocket className="stat-icon" /> },
-    { value: '24/7', label: 'Support', icon: <FaCrown className="stat-icon" /> }
+    { value: '99.9%', label: t('uptime'), icon: <FaStar className="stat-icon" /> },
+    { value: '50M+', label: t('apiCalls'), icon: <FaChartLine className="stat-icon" /> },
+    { value: '1ms', label: t('responseTime'), icon: <FaRocket className="stat-icon" /> },
+    { value: '24/7', label: t('support'), icon: <FaCrown className="stat-icon" /> }
   ];
-
   return (
     <div className="normal-landing">
       {/* Hero Section */}
@@ -58,22 +55,22 @@ const NormalUserLanding = () => {
               <div className="hero-text">
                 <div className="hero-badge">
                   <FaStar className="badge-icon" />
-                  <span>ENTERPRISE GRADE</span>
+                  <span>{t('enterpriseGrade')}</span>
                 </div>
                 <h1 className="hero-title">
-                  <span className="title-line">Next-Generation</span>
-                  <span className="title-line highlight">AI Platform</span>
+                  <span className="title-line">{t('nextGenerationAI')}</span>
+                  <span className="title-line highlight">{t('aiPlatform')}</span>
                 </h1>
                 <p className="hero-subtitle">
-                  Transform your business with cutting-edge artificial intelligence and quantum computing technologies
+                  {t('transformBusiness')}
                 </p>
                 <div className="hero-buttons">
                   <Button as={Link} to="/signup" size="lg" className="hero-btn-primary me-3">
                     <FaMagic className="me-2" />
-                    Start Free Trial
+                    {t('startFreeTrial')}
                   </Button>
                   <Button as={Link} to="/login" size="lg" variant="outline-light" className="hero-btn-secondary">
-                    View Demo
+                    {t('viewDemo')}
                   </Button>
                 </div>
               </div>
@@ -103,7 +100,7 @@ const NormalUserLanding = () => {
           </Row>
         </Container>
       </section>
-
+      
       {/* Stats Section */}
       <section className="stats-section">
         <Container>
@@ -122,7 +119,7 @@ const NormalUserLanding = () => {
           </Row>
         </Container>
       </section>
-
+      
       {/* Features Section */}
       <section className="features-section">
         <Container>
@@ -130,10 +127,10 @@ const NormalUserLanding = () => {
             <Col>
               <h2 className="section-title">
                 <FaMagic className="title-icon me-3" />
-                Revolutionary Features
+                {t('revolutionaryFeatures')}
               </h2>
               <p className="section-subtitle">
-                Experience the future of AI with our cutting-edge technology stack
+                {t('experienceFutureAI')}
               </p>
             </Col>
           </Row>
@@ -156,7 +153,7 @@ const NormalUserLanding = () => {
           </Row>
         </Container>
       </section>
-
+      
       {/* CTA Section */}
       <section className="cta-section">
         <Container>
@@ -165,33 +162,33 @@ const NormalUserLanding = () => {
               <div className="cta-content">
                 <div className="cta-badge">
                   <FaCrown className="badge-icon" />
-                  <span>LIMITED TIME OFFER</span>
+                  <span>{t('limitedTimeOffer')}</span>
                 </div>
-                <h2 className="cta-title">Ready to Dominate Your Industry?</h2>
+                <h2 className="cta-title">{t('readyToDominate')}</h2>
                 <p className="cta-subtitle">
-                  Join the elite businesses that are already leveraging our AI platform to achieve unprecedented growth and efficiency.
+                  {t('joinEliteBusinesses')}
                 </p>
                 <div className="cta-buttons">
                   <Button as={Link} to="/signup" size="lg" className="cta-btn-primary me-3">
                     <FaRocket className="me-2" />
-                    Start Your Journey
+                    {t('startYourJourney')}
                   </Button>
                   <Button size="lg" variant="outline-light" className="cta-btn-secondary">
-                    Schedule Demo
+                    {t('scheduleDemo')}
                   </Button>
                 </div>
                 <div className="cta-trust">
                   <div className="trust-item">
                     <FaStar className="trust-icon" />
-                    <span>4.9/5 Rating</span>
+                    <span>{t('rating')}</span>
                   </div>
                   <div className="trust-item">
                     <FaShieldAlt className="trust-icon" />
-                    <span>100% Secure</span>
+                    <span>{t('secure')}</span>
                   </div>
                   <div className="trust-item">
                     <FaCrown className="trust-icon" />
-                    <span>Enterprise Ready</span>
+                    <span>{t('enterpriseReady')}</span>
                   </div>
                 </div>
               </div>

@@ -21,9 +21,9 @@ const NormalLogin = () => {
   useEffect(() => {
     const ref = searchParams.get('ref');
     if (ref) {
-      setSuccess('Referral code detected! You can proceed with login or signup.');
+      setSuccess(t('referralCodeDetected'));
     }
-  }, [searchParams]);
+  }, [searchParams, t]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -47,7 +47,7 @@ const NormalLogin = () => {
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       // Placeholder logic - in real app, this would be handled by backend
-      setSuccess('Login successful! Redirecting to dashboard...');
+      setSuccess(t('loginSuccessful'));
       
       // Simulate redirect after successful login
       setTimeout(() => {
@@ -56,7 +56,7 @@ const NormalLogin = () => {
       }, 1500);
       
     } catch (err) {
-      setError('Login failed. Please check your credentials and try again.');
+      setError(t('loginFailed'));
     } finally {
       setLoading(false);
     }
@@ -87,11 +87,11 @@ const NormalLogin = () => {
                   </div>
                   <div className="auth-badge">
                     <FaStar className="badge-icon" />
-                    <span>PREMIUM ACCESS</span>
+                    <span>{t('premiumAccess')}</span>
                   </div>
                   <h2 className="auth-title">{t('login')}</h2>
                   <p className="auth-subtitle">
-                    Welcome back! Please login to your account.
+                    {t('welcomeBack')}
                   </p>
                 </div>
                 
@@ -121,7 +121,7 @@ const NormalLogin = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="Enter your email"
+                        placeholder={t('enterEmail')}
                         required
                         className="form-control-modern"
                       />
@@ -139,7 +139,7 @@ const NormalLogin = () => {
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
-                        placeholder="Enter your password"
+                        placeholder={t('enterPassword')}
                         required
                         className="form-control-modern"
                       />

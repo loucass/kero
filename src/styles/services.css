@@ -1,10 +1,16 @@
-/* Modern Services Page Styles */
+/* Modern Services Page Styles with Theme Support */
 .services-page.modern-services {
   padding: 2rem 0;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background-color: var(--light-bg);
   position: relative;
   overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+/* Dark theme support for services page */
+body.dark-theme .services-page.modern-services {
+  background-color: var(--dark-bg);
 }
 
 .services-background {
@@ -118,10 +124,13 @@
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #0f0c29, #302b63);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--light-text);
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for services title */
+body.dark-theme .services-title {
+  color: var(--dark-text);
 }
 
 .services-balance {
@@ -154,36 +163,64 @@
 
 .balance-label {
   font-size: 0.9rem;
-  color: #6c757d;
+  color: var(--light-text);
   text-transform: uppercase;
   letter-spacing: 1px;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for balance label */
+body.dark-theme .balance-label {
+  color: var(--dark-text);
+  opacity: 0.7;
 }
 
 .balance-amount {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #0f0c29;
+  color: var(--light-text);
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for balance amount */
+body.dark-theme .balance-amount {
+  color: var(--dark-text);
 }
 
 .services-subtitle {
   font-size: 1.2rem;
-  color: #6c757d;
+  color: var(--light-text);
   max-width: 700px;
   margin: 0 auto;
   font-weight: 300;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for services subtitle */
+body.dark-theme .services-subtitle {
+  color: var(--dark-text);
+  opacity: 0.7;
 }
 
 /* Service Cards */
 .modern-service-card {
   border: none;
   border-radius: 20px;
-  background: white;
+  background-color: var(--light-card);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s ease;
+  transition: all 0.4s ease, background-color 0.3s ease;
   overflow: hidden;
   position: relative;
   height: 100%;
   animation: slideUp 0.6s ease-out;
+}
+
+/* Dark theme support for service cards */
+body.dark-theme .modern-service-card {
+  background-color: var(--dark-card);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .modern-service-card::before {
@@ -288,16 +325,30 @@
 .service-name {
   font-size: 1.4rem;
   font-weight: 700;
-  color: #0f0c29;
+  color: var(--light-text);
   margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for service name */
+body.dark-theme .service-name {
+  color: var(--dark-text);
 }
 
 .service-description {
-  color: #6c757d;
+  color: var(--light-text);
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
   text-align: center;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for service description */
+body.dark-theme .service-description {
+  color: var(--dark-text);
+  opacity: 0.7;
 }
 
 /* Service Price */
@@ -309,14 +360,23 @@
 .price-amount {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #667eea;
+  color: var(--accent-color);
   margin-right: 0.5rem;
+  transition: color 0.3s ease;
 }
 
 .price-period {
   font-size: 1rem;
-  color: #6c757d;
+  color: var(--light-text);
   vertical-align: top;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for price period */
+body.dark-theme .price-period {
+  color: var(--dark-text);
+  opacity: 0.7;
 }
 
 /* Service Features */
@@ -334,8 +394,16 @@
   display: flex;
   align-items: center;
   margin-bottom: 0.75rem;
-  color: #495057;
+  color: var(--light-text);
   font-size: 0.9rem;
+  opacity: 0.9;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for features list */
+body.dark-theme .features-list li {
+  color: var(--dark-text);
+  opacity: 0.8;
 }
 
 .feature-check {
@@ -408,6 +476,13 @@
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  background-color: var(--light-card);
+  transition: background-color 0.3s ease;
+}
+
+/* Dark theme support for modal content */
+body.dark-theme .modern-modal .modal-content {
+  background-color: var(--dark-card);
 }
 
 .modern-modal .modal-header {
@@ -424,6 +499,13 @@
 
 .modern-modal .modal-body {
   padding: 2rem;
+  color: var(--light-text);
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for modal body */
+body.dark-theme .modern-modal .modal-body {
+  color: var(--dark-text);
 }
 
 .modal-service-details {
@@ -446,8 +528,14 @@
 .modal-service-details h4 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #0f0c29;
+  color: var(--light-text);
   margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for modal service details */
+body.dark-theme .modal-service-details h4 {
+  color: var(--dark-text);
 }
 
 .modal-price {
@@ -457,14 +545,20 @@
 .modal-price .price-amount {
   font-size: 2rem;
   font-weight: 800;
-  color: #667eea;
+  color: var(--accent-color);
 }
 
 .balance-info {
-  background: #f8f9fa;
+  background-color: var(--light-bg);
   border-radius: 15px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+/* Dark theme support for balance info */
+body.dark-theme .balance-info {
+  background-color: var(--dark-bg);
 }
 
 .balance-row {
@@ -472,6 +566,13 @@
   justify-content: space-between;
   margin-bottom: 0.75rem;
   font-size: 0.95rem;
+  color: var(--light-text);
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for balance row */
+body.dark-theme .balance-row {
+  color: var(--dark-text);
 }
 
 .balance-row:last-child {
@@ -480,7 +581,13 @@
 
 .balance-value {
   font-weight: 600;
-  color: #495057;
+  color: var(--light-text);
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for balance value */
+body.dark-theme .balance-value {
+  color: var(--dark-text);
 }
 
 .cost-value {
@@ -489,19 +596,32 @@
 }
 
 .total-row {
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 0.75rem;
   margin-top: 0.75rem;
   font-weight: 700;
 }
 
+/* Dark theme support for total row border */
+body.dark-theme .total-row {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
 .total-value {
-  color: #667eea;
+  color: var(--accent-color);
 }
 
 .modal-confirmation {
-  color: #6c757d;
+  color: var(--light-text);
   margin-bottom: 0;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* Dark theme support for modal confirmation */
+body.dark-theme .modal-confirmation {
+  color: var(--dark-text);
+  opacity: 0.7;
 }
 
 .modern-modal .modal-footer {
@@ -510,12 +630,20 @@
 }
 
 .modern-modal .btn-secondary {
-  background: #f8f9fa;
-  border: 2px solid #dee2e6;
-  color: #495057;
+  background: var(--light-bg);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  color: var(--light-text);
   border-radius: 50px;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Dark theme support for modal secondary button */
+body.dark-theme .modern-modal .btn-secondary {
+  background: var(--dark-bg);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--dark-text);
 }
 
 .modern-modal .btn-primary {
@@ -556,59 +684,46 @@
   .services-page.modern-services {
     padding: 1rem 0;
   }
-
   .services-title {
     font-size: 2.5rem;
   }
-
   .services-balance {
     flex-direction: column;
     gap: 0.5rem;
   }
-
   .balance-info {
     text-align: center;
   }
-
   .services-subtitle {
     font-size: 1rem;
   }
-
   .service-icon-bg {
     width: 60px;
     height: 60px;
   }
-
   .service-icon-bg svg {
     font-size: 1.5rem;
   }
-
   .service-name {
     font-size: 1.2rem;
   }
-
   .price-amount {
     font-size: 2rem;
   }
-
   .service-btn {
     padding: 0.6rem 1.5rem;
     font-size: 0.9rem;
   }
-
   .modal-service-icon {
     width: 60px;
     height: 60px;
   }
-
   .modal-service-icon svg {
     font-size: 1.5rem;
   }
-
   .modal-service-details h4 {
     font-size: 1.3rem;
   }
-
   .modal-price .price-amount {
     font-size: 1.8rem;
   }
@@ -618,33 +733,26 @@
   .services-title {
     font-size: 2rem;
   }
-
   .balance-icon-wrapper {
     width: 50px;
     height: 50px;
   }
-
   .balance-icon {
     font-size: 1.5rem;
   }
-
   .balance-amount {
     font-size: 1.5rem;
   }
-
   .service-icon-bg {
     width: 50px;
     height: 50px;
   }
-
   .service-icon-bg svg {
     font-size: 1.3rem;
   }
-
   .service-name {
     font-size: 1.1rem;
   }
-
   .price-amount {
     font-size: 1.8rem;
   }
@@ -654,16 +762,13 @@
 .rtl .features-list li {
   flex-direction: row-reverse;
 }
-
 .rtl .feature-check {
   margin-right: 0;
   margin-left: 0.75rem;
 }
-
 .rtl .balance-row {
   flex-direction: row-reverse;
 }
-
 .rtl .badge-icon {
   margin-right: 0;
   margin-left: 0.5rem;

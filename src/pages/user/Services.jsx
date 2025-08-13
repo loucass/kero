@@ -24,60 +24,60 @@ const Services = () => {
         setServices([
           {
             id: 1,
-            name: 'Basic Analytics',
-            description: 'Essential analytics for your business with real-time insights',
+            name: t('basicAnalytics'),
+            description: t('essentialAnalyticsBusiness'),
             price: 29.99,
-            features: ['Real-time analytics', 'Basic reports', 'Email support', '5GB storage'],
+            features: [t('realTimeAnalytics'), t('basicReports'), t('emailSupport'), t('storage5GB')],
             icon: <FaChartLine />,
             popular: false,
             subscribed: false
           },
           {
             id: 2,
-            name: 'Professional AI',
-            description: 'Advanced AI-powered analytics with machine learning capabilities',
+            name: t('professionalAI'),
+            description: t('advancedAIPowered'),
             price: 79.99,
-            features: ['Advanced AI analytics', 'Machine learning', 'Priority support', '50GB storage', 'Custom reports'],
+            features: [t('advancedAIAnalytics'), t('machineLearning'), t('prioritySupport'), t('storage50GB'), t('customReports')],
             icon: <FaRobot />,
             popular: true,
             subscribed: true
           },
           {
             id: 3,
-            name: 'Enterprise Suite',
-            description: 'Complete enterprise solution with unlimited features and support',
+            name: t('enterpriseSuite'),
+            description: t('completeEnterpriseSolution'),
             price: 199.99,
-            features: ['Unlimited analytics', 'Full AI suite', '24/7 dedicated support', 'Unlimited storage', 'Custom integrations', 'API access'],
+            features: [t('unlimitedAnalytics'), t('fullAISuite'), t('dedicatedSupport'), t('unlimitedStorage'), t('customIntegrations'), t('apiAccess')],
             icon: <FaCrown />,
             popular: false,
             subscribed: false
           },
           {
             id: 4,
-            name: 'Security Pro',
-            description: 'Advanced security monitoring and threat detection',
+            name: t('securityPro'),
+            description: t('advancedSecurityMonitoring'),
             price: 49.99,
-            features: ['Security monitoring', 'Threat detection', 'Compliance reporting', 'Security alerts'],
+            features: [t('securityMonitoring'), t('threatDetection'), t('complianceReporting'), t('securityAlerts')],
             icon: <FaShieldAlt />,
             popular: false,
             subscribed: false
           },
           {
             id: 5,
-            name: 'Cloud Storage',
-            description: 'Secure cloud storage with automatic backup and sync',
+            name: t('cloudStorage'),
+            description: t('secureCloudStorage'),
             price: 19.99,
-            features: ['100GB storage', 'Automatic backup', 'File sync', 'Secure sharing'],
+            features: [t('storage100GB'), t('automaticBackup'), t('fileSync'), t('secureSharing')],
             icon: <FaCloud />,
             popular: false,
             subscribed: false
           },
           {
             id: 6,
-            name: 'Database Pro',
-            description: 'Professional database management with advanced querying',
+            name: t('databasePro'),
+            description: t('professionalDatabaseManagement'),
             price: 39.99,
-            features: ['Database management', 'Advanced queries', 'Performance optimization', 'Data backup'],
+            features: [t('databaseManagement'), t('advancedQueries'), t('performanceOptimization'), t('dataBackup')],
             icon: <FaDatabase />,
             popular: false,
             subscribed: false
@@ -87,12 +87,12 @@ const Services = () => {
         setUserBalance(150.75);
         setLoading(false);
       } catch (error) {
-        setError('Failed to load services');
+        setError(t('error'));
         setLoading(false);
       }
     };
     fetchData();
-  }, []);
+  }, [t]);
 
   const handleSubscribe = (service) => {
     setSelectedService(service);
@@ -125,7 +125,7 @@ const Services = () => {
       setSelectedService(null);
       
     } catch (error) {
-      setError('Failed to subscribe to service');
+      setError(t('error'));
     }
   };
 
@@ -171,7 +171,7 @@ const Services = () => {
             <div className="services-header">
               <div className="services-badge">
                 <FaStar className="badge-icon" />
-                <span>PREMIUM SERVICES</span>
+                <span>{t('premiumServices')}</span>
               </div>
               <h1 className="services-title">{t('services')}</h1>
               <div className="services-balance">
@@ -179,12 +179,12 @@ const Services = () => {
                   <FaGem className="balance-icon" />
                 </div>
                 <div className="balance-info">
-                  <div className="balance-label">Current Balance</div>
+                  <div className="balance-label">{t('currentBalance')}</div>
                   <div className="balance-amount">${userBalance.toFixed(2)}</div>
                 </div>
               </div>
               <p className="services-subtitle">
-                Choose the perfect plan for your needs and unlock powerful features
+                {t('choosePerfectPlan')}
               </p>
             </div>
           </Col>
@@ -208,7 +208,7 @@ const Services = () => {
                   <div className="popular-badge">
                     <Badge bg="warning">
                       <FaStar className="me-1" />
-                      Most Popular
+                      {t('mostPopular')}
                     </Badge>
                   </div>
                 )}
@@ -286,7 +286,7 @@ const Services = () => {
         <Modal.Header closeButton>
           <Modal.Title className="modal-title">
             <FaRocket className="me-2" />
-            Confirm Subscription
+            {t('confirmSubscription')}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -303,32 +303,32 @@ const Services = () => {
               
               <div className="balance-info">
                 <div className="balance-row">
-                  <span>Current Balance:</span>
+                  <span>{t('currentBalanceLabel')}</span>
                   <span className="balance-value">${userBalance.toFixed(2)}</span>
                 </div>
                 <div className="balance-row">
-                  <span>Subscription Cost:</span>
+                  <span>{t('subscriptionCost')}</span>
                   <span className="cost-value">-${selectedService.price.toFixed(2)}</span>
                 </div>
                 <div className="balance-row total-row">
-                  <span>Balance After Subscription:</span>
+                  <span>{t('balanceAfterSubscription')}</span>
                   <span className="total-value">${(userBalance - selectedService.price).toFixed(2)}</span>
                 </div>
               </div>
               
               <p className="modal-confirmation">
-                Are you sure you want to subscribe to this service?
+                {t('areYouSureSubscribe')}
               </p>
             </div>
           )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowSubscribeModal(false)}>
-            Cancel
+            {t('cancel')}
           </Button>
           <Button variant="primary" onClick={confirmSubscribe}>
             <FaBolt className="me-2" />
-            Confirm Subscription
+            {t('confirmSubscription')}
           </Button>
         </Modal.Footer>
       </Modal>

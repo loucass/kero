@@ -22,16 +22,16 @@ const WalletRecharge = () => {
   const paymentMethods = [
     {
       id: 'mobile',
-      name: 'Mobile Payment',
+      name: t('mobilePayment'),
       icon: <FaMobileAlt />,
-      description: 'Pay using mobile wallet or banking app',
+      description: t('payUsingMobile'),
       phoneNumber: '+1 234 567 8900'
     },
     {
       id: 'bank',
-      name: 'Bank Transfer',
+      name: t('bankTransfer'),
       icon: <FaCreditCard />,
-      description: 'Direct bank transfer to our account',
+      description: t('directBankTransfer'),
       accountNumber: 'AI-PLATFORM-1234'
     }
   ];
@@ -44,7 +44,7 @@ const WalletRecharge = () => {
         await new Promise(resolve => setTimeout(resolve, 500));
         setCurrentBalance(150.75);
       } catch (error) {
-        setError('Failed to load current balance');
+        setError(t('error'));
       }
     };
     fetchBalance();
@@ -85,10 +85,10 @@ const WalletRecharge = () => {
     try {
       // Validate form
       if (!formData.amount || parseFloat(formData.amount) <= 0) {
-        throw new Error('Please enter a valid amount');
+        throw new Error(t('pleaseEnterValidAmount'));
       }
       if (!formData.screenshot) {
-        throw new Error('Please upload payment screenshot');
+        throw new Error(t('pleaseUploadPaymentScreenshot'));
       }
       
       // Placeholder for backend integration
@@ -98,7 +98,7 @@ const WalletRecharge = () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       // Placeholder logic - in real app, this would be handled by backend
-      setSuccess('Payment verification submitted successfully! Your wallet will be updated within 24 hours.');
+      setSuccess(t('paymentVerificationSubmitted'));
       
       // Reset form
       setFormData({
@@ -111,7 +111,7 @@ const WalletRecharge = () => {
       setPreviewUrl('');
       
     } catch (err) {
-      setError(err.message || 'Failed to submit payment verification');
+      setError(err.message || t('failedToSubmitPayment'));
     } finally {
       setLoading(false);
     }
@@ -133,11 +133,11 @@ const WalletRecharge = () => {
             <div className="wallet-header">
               <div className="wallet-badge">
                 <FaStar className="badge-icon" />
-                <span>WALLET RECHARGE</span>
+                <span>{t('walletRecharge')}</span>
               </div>
               <h1 className="wallet-title">{t('walletRecharge')}</h1>
               <p className="wallet-subtitle">
-                Add funds to your wallet securely and quickly
+                {t('addFundsToWallet')}
               </p>
             </div>
           </Col>
@@ -174,13 +174,13 @@ const WalletRecharge = () => {
                       <FaMoneyBillWave className="form-icon" />
                     </div>
                   </div>
-                  <h4 className="form-title">Recharge Form</h4>
+                  <h4 className="form-title">{t('rechargeForm')}</h4>
                 </div>
                 
                 <Form onSubmit={handleSubmit}>
                   {/* Payment Method Selection */}
                   <Form.Group className="mb-4 form-group-modern">
-                    <Form.Label>Payment Method</Form.Label>
+                    <Form.Label>{t('paymentMethod')}</Form.Label>
                     <div className="payment-methods">
                       {paymentMethods.map((method) => (
                         <div
@@ -234,13 +234,13 @@ const WalletRecharge = () => {
                   
                   {/* Payment Details */}
                   <Form.Group className="mb-4 form-group-modern">
-                    <Form.Label>Payment Details</Form.Label>
+                    <Form.Label>{t('paymentDetails')}</Form.Label>
                     <Alert className="payment-info modern-payment-info">
                       <FaInfoCircle className="me-2" />
                       <div>
-                        <strong>Send payment to:</strong><br />
+                        <strong>{t('sendPaymentTo')}</strong><br />
                         {selectedPaymentMethod?.phoneNumber || selectedPaymentMethod?.accountNumber}<br />
-                        <small>Please include your user ID in the payment reference</small>
+                        <small>{t('includeUserIdInReference')}</small>
                       </div>
                     </Alert>
                   </Form.Group>
@@ -257,7 +257,7 @@ const WalletRecharge = () => {
                         name="phoneNumber"
                         value={formData.phoneNumber}
                         onChange={handleChange}
-                        placeholder="Enter your phone number"
+                        placeholder={t('enterPhoneNumber')}
                         required
                         className="form-control-modern"
                       />
@@ -279,9 +279,9 @@ const WalletRecharge = () => {
                       <label htmlFor="screenshot" className="file-upload-label">
                         <FaUpload className="upload-icon" />
                         <div>
-                          <strong>Choose file</strong>
-                          <p>or drag and drop</p>
-                          <small>PNG, JPG, GIF up to 10MB</small>
+                          <strong>{t('chooseFile')}</strong>
+                          <p>{t('orDragAndDrop')}</p>
+                          <small>{t('fileUploadInfo')}</small>
                         </div>
                       </label>
                       {formData.screenshot && (
@@ -323,13 +323,13 @@ const WalletRecharge = () => {
                   <div className="balance-icon-wrapper">
                     <FaWallet className="balance-icon" />
                   </div>
-                  <span>Current Balance</span>
+                  <span>{t('currentBalance')}</span>
                 </div>
                 <div className="balance-amount">
                   ${currentBalance.toFixed(2)}
                 </div>
                 <div className="balance-info">
-                  <small>Available for services</small>
+                  <small>{t('availableForServices')}</small>
                 </div>
               </Card.Body>
             </Card>
@@ -341,18 +341,18 @@ const WalletRecharge = () => {
                   <div className="instructions-icon-wrapper">
                     <FaQrcode className="instructions-icon" />
                   </div>
-                  <h5 className="instructions-title">How to Recharge</h5>
+                  <h5 className="instructions-title">{t('howToRecharge')}</h5>
                 </div>
                 <ol className="instructions-list">
-                  <li>Select your preferred payment method</li>
-                  <li>Enter the amount you want to add</li>
-                  <li>Send payment to the provided number/account</li>
-                  <li>Upload payment screenshot as proof</li>
-                  <li>Submit for verification</li>
+                  <li>{t('selectPaymentMethod')}</li>
+                  <li>{t('enterAmount')}</li>
+                  <li>{t('sendPayment')}</li>
+                  <li>{t('uploadPaymentProof')}</li>
+                  <li>{t('submitForVerification')}</li>
                 </ol>
                 <Alert variant="info" className="mt-3 modern-note-alert">
                   <small>
-                    <strong>Note:</strong> Payment verification typically takes 1-24 hours. You'll receive a notification once your wallet is updated.
+                    {t('notePaymentVerification')}
                   </small>
                 </Alert>
               </Card.Body>
@@ -366,19 +366,19 @@ const WalletRecharge = () => {
         <Modal.Header closeButton>
           <Modal.Title>
             <FaRocket className="me-2" />
-            Payment Screenshot Preview
+            {t('paymentScreenshotPreview')}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {previewUrl && (
             <div className="text-center">
-              <img src={previewUrl} alt="Payment Screenshot" className="preview-image" />
+              <img src={previewUrl} alt={t('paymentScreenshot')} className="preview-image" />
             </div>
           )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowPreview(false)}>
-            Close
+            {t('close')}
           </Button>
         </Modal.Footer>
       </Modal>

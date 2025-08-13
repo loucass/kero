@@ -41,11 +41,11 @@ const NormalSignup = () => {
 
   const validateForm = () => {
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
+      setError(t('passwordsDoNotMatch'));
       return false;
     }
     if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters long');
+      setError(t('passwordMustBe6Chars'));
       return false;
     }
     return true;
@@ -70,7 +70,7 @@ const NormalSignup = () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       // Placeholder logic - in real app, this would be handled by backend
-      setSuccess('Account created successfully! Please check your email to verify your account.');
+      setSuccess(t('accountCreatedSuccess'));
       
       // Clear form
       setFormData({
@@ -82,7 +82,7 @@ const NormalSignup = () => {
       });
       
     } catch (err) {
-      setError('Signup failed. Please try again later.');
+      setError(t('signupFailed'));
     } finally {
       setLoading(false);
     }
@@ -117,11 +117,11 @@ const NormalSignup = () => {
                   </div>
                   <div className="auth-badge">
                     <FaStar className="badge-icon" />
-                    <span>CREATE ACCOUNT</span>
+                    <span>{t('createAccount')}</span>
                   </div>
                   <h2 className="auth-title">{t('signup')}</h2>
                   <p className="auth-subtitle">
-                    Create your account and get started today!
+                    {t('createAccount')}
                   </p>
                 </div>
                 
@@ -141,7 +141,7 @@ const NormalSignup = () => {
                 
                 <Form onSubmit={handleSubmit}>
                   <Form.Group className="mb-4 form-group-modern">
-                    <Form.Label>Full Name</Form.Label>
+                    <Form.Label>{t('fullName')}</Form.Label>
                     <div className="input-group-modern">
                       <span className="input-icon">
                         <FaUser />
@@ -151,7 +151,7 @@ const NormalSignup = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="Enter your full name"
+                        placeholder={t('enterFullName')}
                         required
                         className="form-control-modern"
                       />
@@ -169,7 +169,7 @@ const NormalSignup = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="Enter your email"
+                        placeholder={t('enterEmail')}
                         required
                         className="form-control-modern"
                       />
@@ -187,7 +187,7 @@ const NormalSignup = () => {
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
-                        placeholder="Create a password"
+                        placeholder={t('createPassword')}
                         required
                         className="form-control-modern"
                       />
@@ -212,7 +212,7 @@ const NormalSignup = () => {
                         name="confirmPassword"
                         value={formData.confirmPassword}
                         onChange={handleChange}
-                        placeholder="Confirm your password"
+                        placeholder={t('confirmPasswordLabel')}
                         required
                         className="form-control-modern"
                       />
@@ -227,7 +227,7 @@ const NormalSignup = () => {
                   </Form.Group>
                   
                   <Form.Group className="mb-4 form-group-modern">
-                    <Form.Label>Referral Code (Optional)</Form.Label>
+                    <Form.Label>{t('referralCodeOptional')}</Form.Label>
                     <div className="input-group-modern">
                       <span className="input-icon">
                         <FaUser />
@@ -237,7 +237,7 @@ const NormalSignup = () => {
                         name="referralCode"
                         value={formData.referralCode}
                         onChange={handleChange}
-                        placeholder="Enter referral code"
+                        placeholder={t('enterReferralCode')}
                         className="form-control-modern"
                       />
                     </div>
